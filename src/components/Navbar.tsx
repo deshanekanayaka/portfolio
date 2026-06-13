@@ -79,9 +79,9 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
         <div style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
           {links.map(l => (
             <a key={l.label} href={l.href}
-              style={{ fontSize: 14, color: 'var(--text-muted)', transition: 'color 0.15s' }}
-              onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+              style={{ fontSize: 14, color: 'var(--text-primary)', opacity: 0.75, transition: 'color 0.15s, opacity 0.15s' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.opacity = '1' }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.opacity = '0.75' }}
             >{l.label}</a>
           ))}
         </div>

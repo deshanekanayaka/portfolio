@@ -27,14 +27,15 @@ export default function AboutSection() {
             letterSpacing: '-0.03em', lineHeight: 1,
             marginBottom: 32,
           }}>about.</h2>
-          <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 14 }}>
-            Final-year Computer Science student at the University of Westminster, graduating July 2026.
-            I build full-stack systems — from ML-integrated clinical tools to production REST APIs
-            and agile client deliveries.
-          </p>
           <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.8 }}>
-            Open to junior and graduate software engineering roles in London.
-            Eligible for Graduate visa sponsorship from July 2026.
+            Computer Science graduate from Westminster. I build full-stack
+            because I get to care about two very different things at once:
+            colours, typography, and interfaces that feel right and work for
+            everyone, and on the other side, authentication that holds up,
+            normalised schemas, and APIs that handle failure as gracefully
+            as success. I enjoy understanding how each piece connects, from
+            the database query to the pixel on screen. Open to junior
+            software engineering and adjacent technical roles in London.
           </p>
         </div>
 

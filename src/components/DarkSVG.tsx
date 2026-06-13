@@ -4,13 +4,13 @@ export default function DarkSVG() {
   useEffect(() => {
     // A — CONSTELLATION STAR HOVER
     const starData = [
-      { id: 'star-1-dark', cx: 80,  cy: 160, origR: 4   },
-      { id: 'star-2-dark', cx: 180, cy: 100, origR: 3.5 },
-      { id: 'star-3-dark', cx: 280, cy: 140, origR: 3   },
-      { id: 'star-4-dark', cx: 340, cy: 80,  origR: 4.5 },
-      { id: 'star-5-dark', cx: 420, cy: 120, origR: 2.5 },
-      { id: 'star-6-dark', cx: 240, cy: 60,  origR: 2   },
-      { id: 'star-7-dark', cx: 310, cy: 200, origR: 2.5 },
+      { id: 'star-1-dark', cx: 80,  cy: 160, origR: 4.5 },
+      { id: 'star-2-dark', cx: 180, cy: 100, origR: 4   },
+      { id: 'star-3-dark', cx: 280, cy: 140, origR: 3.5 },
+      { id: 'star-4-dark', cx: 340, cy: 80,  origR: 5   },
+      { id: 'star-5-dark', cx: 420, cy: 120, origR: 3   },
+      { id: 'star-6-dark', cx: 240, cy: 60,  origR: 2.5 },
+      { id: 'star-7-dark', cx: 310, cy: 200, origR: 3   },
     ]
 
     const handleStarMove = (e: MouseEvent) => {
@@ -160,10 +160,10 @@ export default function DarkSVG() {
           </linearGradient>
         </defs>
 
-        <g opacity="0.11">
+        <g opacity="0.22">
           {/* CRESCENT MOON — top right */}
           <g id="moon-group-dark">
-            <circle cx="1080" cy="120" r="160" fill="none" stroke="#A8B8CC" strokeWidth="1.5"/>
+            <circle cx="1080" cy="120" r="160" fill="none" stroke="#A8B8CC" strokeWidth="2"/>
             <circle cx="1118" cy="100" r="140" fill="#07090F" stroke="none"/>
             {/* Craters */}
             <circle cx="1010" cy="80"  r="18" fill="none" stroke="#A8B8CC" strokeWidth="1"/>
@@ -178,44 +178,44 @@ export default function DarkSVG() {
 
           {/* GUITAR STRINGS */}
           <g style={{ pointerEvents: 'all' }}>
-            <path id="string-1-dark" d="M 1200 800 Q 700 200 0 620" fill="none" stroke="#3B82F6" strokeWidth="0.9"  style={{ pointerEvents: 'stroke' }}/>
-            <path id="string-2-dark" d="M 1200 800 Q 720 240 0 660" fill="none" stroke="#3B82F6" strokeWidth="0.85" style={{ pointerEvents: 'stroke' }}/>
-            <path id="string-3-dark" d="M 1200 800 Q 740 280 0 700" fill="none" stroke="#3B82F6" strokeWidth="0.8"  style={{ pointerEvents: 'stroke' }}/>
-            <path id="string-4-dark" d="M 1200 800 Q 760 320 0 740" fill="none" stroke="#3B82F6" strokeWidth="0.75" style={{ pointerEvents: 'stroke' }}/>
-            <path id="string-5-dark" d="M 1200 800 Q 780 360 0 770" fill="none" stroke="#3B82F6" strokeWidth="0.7"  style={{ pointerEvents: 'stroke' }}/>
-            <path id="string-6-dark" d="M 1200 800 Q 800 400 0 800" fill="none" stroke="#3B82F6" strokeWidth="0.65" style={{ pointerEvents: 'stroke' }}/>
-            <path id="string-7-dark" d="M 1200 700 Q 600 100 100 500" fill="none" stroke="#3B82F6" strokeWidth="1.1" style={{ pointerEvents: 'stroke' }}/>
-            <path id="string-8-dark" d="M 1200 650 Q 580 80 80 460"  fill="none" stroke="#3B82F6" strokeWidth="0.9" style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-1-dark" d="M 1200 800 Q 700 200 0 620" fill="none" stroke="#3B82F6" strokeWidth="1.2"  style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-2-dark" d="M 1200 800 Q 720 240 0 660" fill="none" stroke="#3B82F6" strokeWidth="1.15" style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-3-dark" d="M 1200 800 Q 740 280 0 700" fill="none" stroke="#3B82F6" strokeWidth="1.1"  style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-4-dark" d="M 1200 800 Q 760 320 0 740" fill="none" stroke="#3B82F6" strokeWidth="1.05" style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-5-dark" d="M 1200 800 Q 780 360 0 770" fill="none" stroke="#3B82F6" strokeWidth="1.0"  style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-6-dark" d="M 1200 800 Q 800 400 0 800" fill="none" stroke="#3B82F6" strokeWidth="0.95" style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-7-dark" d="M 1200 700 Q 600 100 100 500" fill="none" stroke="#3B82F6" strokeWidth="1.4" style={{ pointerEvents: 'stroke' }}/>
+            <path id="string-8-dark" d="M 1200 650 Q 580 80 80 460"  fill="none" stroke="#3B82F6" strokeWidth="1.2" style={{ pointerEvents: 'stroke' }}/>
           </g>
           {/* Fret dots */}
-          <circle cx="900" cy="310" r="2.5" fill="#60A5FA"/>
-          <circle cx="750" cy="370" r="2"   fill="#60A5FA"/>
-          <circle cx="600" cy="430" r="2.5" fill="#60A5FA"/>
-          <circle cx="450" cy="490" r="2"   fill="#60A5FA"/>
-          <circle cx="300" cy="540" r="2.5" fill="#60A5FA"/>
-          <circle cx="950" cy="280" r="1.8" fill="#60A5FA"/>
-          <circle cx="800" cy="340" r="2"   fill="#60A5FA"/>
-          <circle cx="650" cy="400" r="1.8" fill="#60A5FA"/>
-          <circle cx="500" cy="460" r="2"   fill="#60A5FA"/>
-          <circle cx="350" cy="510" r="1.8" fill="#60A5FA"/>
-          <circle cx="870" cy="250" r="1.5" fill="#60A5FA"/>
-          <circle cx="720" cy="310" r="1.8" fill="#60A5FA"/>
+          <circle cx="900" cy="310" r="3"   fill="#60A5FA"/>
+          <circle cx="750" cy="370" r="2.5" fill="#60A5FA"/>
+          <circle cx="600" cy="430" r="3"   fill="#60A5FA"/>
+          <circle cx="450" cy="490" r="2.5" fill="#60A5FA"/>
+          <circle cx="300" cy="540" r="3"   fill="#60A5FA"/>
+          <circle cx="950" cy="280" r="2.3" fill="#60A5FA"/>
+          <circle cx="800" cy="340" r="2.5" fill="#60A5FA"/>
+          <circle cx="650" cy="400" r="2.3" fill="#60A5FA"/>
+          <circle cx="500" cy="460" r="2.5" fill="#60A5FA"/>
+          <circle cx="350" cy="510" r="2.3" fill="#60A5FA"/>
+          <circle cx="870" cy="250" r="2"   fill="#60A5FA"/>
+          <circle cx="720" cy="310" r="2.3" fill="#60A5FA"/>
 
           {/* CONSTELLATION */}
-          <line x1="80" y1="160" x2="180" y2="100" stroke="#A8B8CC" strokeWidth="0.7"/>
-          <line x1="180" y1="100" x2="280" y2="140" stroke="#A8B8CC" strokeWidth="0.7"/>
-          <line x1="280" y1="140" x2="340" y2="80"  stroke="#A8B8CC" strokeWidth="0.6"/>
-          <line x1="340" y1="80"  x2="420" y2="120" stroke="#A8B8CC" strokeWidth="0.6"/>
-          <line x1="180" y1="100" x2="240" y2="60"  stroke="#A8B8CC" strokeWidth="0.5"/>
-          <line x1="280" y1="140" x2="310" y2="200" stroke="#A8B8CC" strokeWidth="0.5"/>
+          <line x1="80" y1="160" x2="180" y2="100" stroke="#A8B8CC" strokeWidth="1"/>
+          <line x1="180" y1="100" x2="280" y2="140" stroke="#A8B8CC" strokeWidth="1"/>
+          <line x1="280" y1="140" x2="340" y2="80"  stroke="#A8B8CC" strokeWidth="0.9"/>
+          <line x1="340" y1="80"  x2="420" y2="120" stroke="#A8B8CC" strokeWidth="0.9"/>
+          <line x1="180" y1="100" x2="240" y2="60"  stroke="#A8B8CC" strokeWidth="0.8"/>
+          <line x1="280" y1="140" x2="310" y2="200" stroke="#A8B8CC" strokeWidth="0.8"/>
           {/* Star nodes */}
-          <circle id="star-1-dark" cx="80"  cy="160" r="4"   fill="#A8B8CC"/>
-          <circle id="star-2-dark" cx="180" cy="100" r="3.5" fill="#CBD5E1"/>
-          <circle id="star-3-dark" cx="280" cy="140" r="3"   fill="#A8B8CC"/>
-          <circle id="star-4-dark" cx="340" cy="80"  r="4.5" fill="#CBD5E1"/>
-          <circle id="star-5-dark" cx="420" cy="120" r="2.5" fill="#A8B8CC"/>
-          <circle id="star-6-dark" cx="240" cy="60"  r="2"   fill="#CBD5E1"/>
-          <circle id="star-7-dark" cx="310" cy="200" r="2.5" fill="#A8B8CC"/>
+          <circle id="star-1-dark" cx="80"  cy="160" r="4.5" fill="#A8B8CC"/>
+          <circle id="star-2-dark" cx="180" cy="100" r="4"   fill="#CBD5E1"/>
+          <circle id="star-3-dark" cx="280" cy="140" r="3.5" fill="#A8B8CC"/>
+          <circle id="star-4-dark" cx="340" cy="80"  r="5"   fill="#CBD5E1"/>
+          <circle id="star-5-dark" cx="420" cy="120" r="3"   fill="#A8B8CC"/>
+          <circle id="star-6-dark" cx="240" cy="60"  r="2.5" fill="#CBD5E1"/>
+          <circle id="star-7-dark" cx="310" cy="200" r="3"   fill="#A8B8CC"/>
           {/* Isolated stars */}
           <circle cx="520" cy="50"  r="1.5" fill="#A8B8CC"/>
           <circle cx="460" cy="180" r="1"   fill="#A8B8CC"/>

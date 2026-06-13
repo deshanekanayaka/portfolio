@@ -3,7 +3,7 @@ import ProjectCard, { ProjectData } from './ProjectCard'
 
 const projects: ProjectData[] = [
   {
-    title: 'Diacify — Clinical Decision Support',
+    title: 'Diacify — Clinical Decision Support System',
     description: 'ML system that ranks diabetic patients by urgency. Rebuilt from a 53% university submission to 94% Random Forest accuracy.',
     typeBadge: 'ML · Full-stack',
     statBadge: '94% accuracy',
