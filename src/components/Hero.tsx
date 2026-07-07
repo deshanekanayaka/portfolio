@@ -4,7 +4,8 @@ const socials = [
   { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka', download: false },
   { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/', download: false },
   { icon: Mail, label: 'Email', href: 'mailto:deshanekanayake2003@gmail.com', download: false },
-  { icon: Download, label: 'Download CV', href: '/Tharidu_CV.pdf', download: true },
+  // TODO: add public/Tharidu_Ekanayaka_CV.pdf before deploy
+  { icon: Download, label: 'Download CV', href: '/Tharidu_Ekanayaka_CV.pdf', download: true },
 ]
 
 interface HeroProps {
@@ -13,12 +14,6 @@ interface HeroProps {
 }
 
 export default function Hero({ sinhala, onToggleSinhala }: HeroProps) {
-  const birthDate = new Date('2003-05-22')
-  const today = new Date()
-  let age = today.getFullYear() - birthDate.getFullYear()
-  const m = today.getMonth() - birthDate.getMonth()
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--
-
   return (
     <section style={{
       minHeight: '100vh',
@@ -47,7 +42,7 @@ export default function Hero({ sinhala, onToggleSinhala }: HeroProps) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 28 }}>
             <span style={{ fontSize: 16, color: 'var(--text-primary)', fontWeight: 500 }}>
-              {age} · based in london{' '}
+              software engineer · based in london{' '}
               <span
                 style={{ cursor: 'pointer' }}
                 title="ආයුබෝවන්"
@@ -55,10 +50,17 @@ export default function Hero({ sinhala, onToggleSinhala }: HeroProps) {
               ></span>
             </span>
             <span style={{ fontSize: 16, color: 'var(--text-primary)', fontWeight: 500 }}>
-              bsc(hons) computer science, westminster
+              bsc (hons) computer science, first class honours · westminster
             </span>
             <span style={{ fontSize: 16, color: 'var(--text-primary)', fontWeight: 400, fontStyle: 'italic', opacity: 1 }}>
               fuelled by black coffee · no sugar · no exceptions
+            </span>
+          </div>
+
+          {/* Availability near CTAs */}
+          <div style={{ marginBottom: 10 }}>
+            <span style={{ fontSize: 14, color: 'var(--text-primary)', fontWeight: 500 }}>
+              open to graduate swe and junior ai/ml roles
             </span>
           </div>
 

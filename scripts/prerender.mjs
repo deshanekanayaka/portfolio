@@ -1,0 +1,105 @@
+import fs from 'fs'
+import path from 'path'
+
+// Simple prerender: inject minimal real content into built HTML for better SEO/snippets.
+// It preserves the built bundle and only fills #root with static markup so crawlers see content fast.
+// Note: This is not a full SSR. The client app will hydrate/replace on load.
+
+const distDir = path.resolve(process.cwd(), 'dist')
+const templatePath = path.join(distDir, 'index.html')
+
+if (!fs.existsSync(templatePath)) {
+  console.error('[prerender] dist/index.html not found. Did you run `vite build`?')
+  process.exit(1)
+}
+
+/**
+ * Load base HTML and return helpers to produce route-specific HTML snapshots.
+ */
+const baseHtml = fs.readFileSync(templatePath, 'utf8')
+
+function inject({ title, bodyHtml }) {
+  // Update <title>
+  let html = baseHtml.replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
+  // Inject body content into #root
+  html = html.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`) 
+  return html
+}
+
+function write(routePath, html) {
+  const outDir = path.join(distDir, routePath)
+  fs.mkdirSync(outDir, { recursive: true })
+  fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8')
+}
+
+// Pull project titles from source for accuracy (fallback: hardcode if file read fails)
+function getProjectTitles() {
+  try {
+    const src = fs.readFileSync(path.resolve('src/components/ProjectsSection.tsx'), 'utf8')
+    const titles = Array.from(src.matchAll(/title:\s*'([^']+)'/g)).map(m => m[1])
+    return titles
+  } catch (e) {
+    return []
+  }
+}
+
+const projectTitles = getProjectTitles()
+
+// Routes to prerender
+const routes = [
+  {
+    path: '.',
+    title: 'Tharidu Deshan Ekanayaka | Software Engineer, London',
+    body: `
+      <section style="min-height:60vh;padding:40px 0 24px">
+        <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+          <h1 style="font-size:42px;font-weight:700;color:#111;letter-spacing:-0.02em;margin:0 0 14px">hi, i'm tharidu.</h1>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:15px;color:#222;font-weight:500">software engineer · based in london</span>
+            <span style="font-size:15px;color:#222;font-weight:500">bsc (hons) computer science, first class honours · westminster</span>
+            <span style="font-size:15px;color:#444;font-style:italic">fuelled by black coffee · no sugar · no exceptions</span>
+          </div>
+          <h2 style="font-size:20px;font-weight:700;color:#111;letter-spacing:-0.01em;margin:26px 0 10px">my projects.</h2>
+          <ul style="padding-left:18px;margin:0;color:#333;font-size:14px;line-height:1.7">
+            ${projectTitles.slice(0,6).map(t => `<li>${t}</li>`).join('')}
+          </ul>
+        </div>
+      </section>
+    `,
+  },
+  {
+    path: 'projects/diacify',
+    title: 'Diacify Case Study | Tharidu Deshan Ekanayaka',
+    body: `
+      <main style="padding:40px 0">
+        <div style="max-width:800px;margin:0 auto;padding:0 32px">
+          <h1 style="font-size:28px;font-weight:700;color:#111;letter-spacing:-0.02em;margin:0 0 10px">Diacify · Clinical Decision Support System</h1>
+          <p style="font-size:15px;color:#555;line-height:1.65;margin:0 0 12px">Rebuilt from a 53% university submission into a production-grade three-service system.</p>
+        </div>
+      </main>
+    `,
+  },
+  {
+    path: 'projects/sky-health-check',
+    title: 'SKY Engineering Case Study | Tharidu Deshan Ekanayaka',
+    body: `
+      <main style="padding:40px 0">
+        <div style="max-width:800px;margin:0 auto;padding:0 32px">
+          <h1 style="font-size:28px;font-weight:700;color:#111;letter-spacing:-0.02em;margin:0 0 10px">Agile Group Web Application — SKY Engineering</h1>
+          <p style="font-size:15px;color:#555;line-height:1.65;margin:0 0 12px">Full-stack Django 5 app delivered to a live client in a 12-week agile sprint.</p>
+        </div>
+      </main>
+    `,
+  }
+]
+
+for (const r of routes) {
+  const html = inject({ title: r.title, bodyHtml: r.body })
+  write(r.path, html)
+  if (r.path === '.') {
+    // also overwrite root index.html so the homepage serves content from the root file
+    fs.writeFileSync(templatePath, html, 'utf8')
+  }
+}
+
+console.log('[prerender] Wrote static HTML for /, /projects/diacify, /projects/sky-health-check')

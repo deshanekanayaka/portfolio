@@ -1,5 +1,6 @@
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import ScrollProgress from '../../components/ScrollProgress'
 
 const stack = ['React 18', 'Node.js', 'FastAPI', 'MySQL 8', 'scikit-learn', 'Docker', 'GitHub Actions']
@@ -29,6 +30,10 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
   const navigate = useNavigate()
   return (
     <>
+      <Helmet>
+        <title>Diacify Case Study | Tharidu Deshan Ekanayaka</title>
+        <meta name="description" content="Clinical decision support system case study · rebuilt a 53%-graded submission into a production three-service system with 94% Random Forest accuracy." />
+      </Helmet>
       <ScrollProgress />
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'var(--surface)', borderBottom: '1px solid var(--border)', padding: '0 32px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <button onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontSize: 14, background: 'none', border: 'none', cursor: 'pointer' }}>

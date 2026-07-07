@@ -1,5 +1,6 @@
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import ScrollProgress from '../../components/ScrollProgress'
 
 const stack = ['Django 5', 'Python', 'Bootstrap 5', 'SQLite', 'JavaScript']
@@ -15,6 +16,10 @@ export default function SKYCaseStudy({ theme, onToggleTheme }: Props) {
   const navigate = useNavigate()
   return (
     <>
+      <Helmet>
+        <title>SKY Engineering Case Study | Tharidu Deshan Ekanayaka</title>
+        <meta name="description" content="Agile group web app case study for SKY Engineering · Django 5 app with role-based dashboards and end-to-end tests." />
+      </Helmet>
       <ScrollProgress />
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'var(--surface)', borderBottom: '1px solid var(--border)', padding: '0 32px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <button onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontSize: 14, background: 'none', border: 'none', cursor: 'pointer' }}>

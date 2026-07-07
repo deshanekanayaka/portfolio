@@ -122,60 +122,115 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         </div>
 
         {/* Buttons */}
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {project.caseStudy && (
-            <button
-              onClick={() => navigate(project.caseStudy!)}
-              style={{
-                fontSize: 12, fontWeight: 500,
-                color: 'var(--text-muted)',
-                border: '1px solid var(--border)',
-                borderRadius: 6, padding: '6px 13px',
-                background: 'transparent', transition: 'all 0.15s', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', gap: 5,
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--accent-border)'
-                e.currentTarget.style.color = 'var(--accent)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border)'
-                e.currentTarget.style.color = 'var(--text-muted)'
-              }}
-            >
-              <BookOpen size={12} /> Case study
-            </button>
-          )}
-          <a href={project.github} target="_blank" rel="noopener noreferrer"
-            style={{
-              fontSize: 12, fontWeight: 500, color: 'var(--text-muted)',
-              border: '1px solid var(--border)', borderRadius: 6, padding: '6px 13px',
-              display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.15s',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = 'var(--accent-border)'
-              e.currentTarget.style.color = 'var(--accent)'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = 'var(--border)'
-              e.currentTarget.style.color = 'var(--text-muted)'
-            }}
-          >
-            <Github size={12} /> GitHub
-          </a>
-          <a href={project.demo} target="_blank" rel="noopener noreferrer"
-            style={{
-              fontSize: 12, fontWeight: 500, color: '#fff',
-              background: 'var(--accent)', border: '1px solid var(--accent)',
-              borderRadius: 6, padding: '6px 13px',
-              display: 'flex', alignItems: 'center', gap: 5, transition: 'background 0.15s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = 'var(--accent-hover)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'var(--accent)'}
-          >
-            Live <ExternalLink size={11} />
-          </a>
-        </div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {project.caseStudy && (
+                  <button
+                      onClick={() => navigate(project.caseStudy!)}
+                      style={{
+                          fontSize: 12,
+                          fontWeight: 500,
+                          color: 'var(--text-muted)',
+                          border: '1px solid var(--border)',
+                          borderRadius: 6,
+                          padding: '6px 13px',
+                          background: 'transparent',
+                          transition: 'all 0.15s',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 5,
+                      }}
+                      onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = 'var(--accent-border)'
+                          e.currentTarget.style.color = 'var(--accent)'
+                      }}
+                      onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = 'var(--border)'
+                          e.currentTarget.style.color = 'var(--text-muted)'
+                      }}
+                  >
+                      <BookOpen size={12} />
+                      Case study
+                  </button>
+              )}
+
+              <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                      fontSize: 12,
+                      fontWeight: 500,
+                      color: 'var(--text-muted)',
+                      border: '1px solid var(--border)',
+                      borderRadius: 6,
+                      padding: '6px 13px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 5,
+                      transition: 'all 0.15s',
+                      textDecoration: 'none',
+                  }}
+                  onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--accent-border)'
+                      e.currentTarget.style.color = 'var(--accent)'
+                  }}
+                  onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--border)'
+                      e.currentTarget.style.color = 'var(--text-muted)'
+                  }}
+              >
+                  <Github size={12} />
+                  GitHub
+              </a>
+
+              {project.demo ? (
+                  <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                          fontSize: 12,
+                          fontWeight: 500,
+                          color: '#fff',
+                          background: 'var(--accent)',
+                          border: '1px solid var(--accent)',
+                          borderRadius: 6,
+                          padding: '6px 13px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 5,
+                          transition: 'background 0.15s',
+                          textDecoration: 'none',
+                      }}
+                      onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'var(--accent-hover)'
+                      }}
+                      onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'var(--accent)'
+                      }}
+                  >
+                      Live
+                      <ExternalLink size={11} />
+                  </a>
+              ) : (
+                  <span
+                      style={{
+                          fontSize: 12,
+                          fontWeight: 500,
+                          color: 'var(--text-faint)',
+                          border: '1px dashed var(--border)',
+                          borderRadius: 6,
+                          padding: '6px 13px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 5,
+                      }}
+                  >
+      Demo coming soon
+    </span>
+              )}
+          </div>
       </div>
 
       {lightboxOpen && project.screenshot && (

@@ -15,6 +15,16 @@ const projects: ProjectData[] = [
     screenshot: '/screenshots/diacify.png',
   },
   {
+    title: 'ClaimLens — AI Damage Claim Triage',
+    description: 'Three call LLM pipeline that inspects claim photos against the claimant transcript and returns a structured verdict: supported, contradicted, or not enough information. Red teamed against 12 adversarial scenarios, 8 defects found and fixed.',
+    typeBadge: 'AI · Full-stack',
+    statBadge: '8 defects found & fixed',
+    stack: ['Next.js 15', 'FastAPI', 'Python', 'Anthropic SDK', 'SQLite', 'TypeScript', 'Tailwind v4'],
+    demo: '',
+    github: 'https://github.com/deshanekanayaka/claimlens',
+    screenshot: '/screenshots/claimlens.png',
+  },
+  {
     title: 'Agile Group Web Application',
     description: 'Full-stack Django 5 app delivered to a SKY Engineering client in a 12-week agile sprint. Implemented the Spotify Squad Health Check model across four user tiers with role-based dashboards.',
     typeBadge: 'Full-stack',
