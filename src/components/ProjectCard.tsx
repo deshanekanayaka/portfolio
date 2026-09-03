@@ -112,7 +112,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             {project.flagship && (
               <span style={{
                 fontSize: 10, fontWeight: 500,
-                color: 'var(--accent)', background: 'var(--accent-bg)',
+                color: 'var(--accent-text)', background: 'var(--accent-bg)',
                 border: '1px solid var(--accent-border)',
                 borderRadius: 4, padding: '1px 7px',
               }}>Flagship</span>
@@ -123,7 +123,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         {/* Type + stat badges */}
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           <span style={{
-            fontSize: 11, fontWeight: 500, color: 'var(--accent)',
+            fontSize: 11, fontWeight: 500, color: 'var(--accent-text)',
             background: 'var(--accent-bg)', border: '1px solid var(--accent-border)',
             borderRadius: 4, padding: '2px 8px',
           }}>{project.typeBadge}</span>
@@ -188,7 +188,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                       }}
                       onMouseEnter={(e) => {
                           e.currentTarget.style.borderColor = 'var(--accent-border)'
-                          e.currentTarget.style.color = 'var(--accent)'
+                          e.currentTarget.style.color = 'var(--accent-text)'
                       }}
                       onMouseLeave={(e) => {
                           e.currentTarget.style.borderColor = 'var(--border)'
@@ -219,7 +219,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                   }}
                   onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = 'var(--accent-border)'
-                      e.currentTarget.style.color = 'var(--accent)'
+                      e.currentTarget.style.color = 'var(--accent-text)'
                   }}
                   onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = 'var(--border)'
@@ -239,8 +239,8 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                           fontSize: 12,
                           fontWeight: 500,
                           color: '#fff',
-                          background: 'var(--accent)',
-                          border: '1px solid var(--accent)',
+                          background: 'var(--accent-solid)',
+                          border: '1px solid var(--accent-solid)',
                           borderRadius: 6,
                           padding: '6px 13px',
                           display: 'flex',
@@ -250,10 +250,10 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                           textDecoration: 'none',
                       }}
                       onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'var(--accent-hover)'
+                          e.currentTarget.style.background = 'var(--accent-solid-hover)'
                       }}
                       onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'var(--accent)'
+                          e.currentTarget.style.background = 'var(--accent-solid)'
                       }}
                   >
                       Live

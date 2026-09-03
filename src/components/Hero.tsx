@@ -65,7 +65,7 @@ export default function Hero({ sinhala }: HeroProps) {
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'var(--accent)'
-                e.currentTarget.style.color = 'var(--accent)'
+                e.currentTarget.style.color = 'var(--accent-text)'
                 e.currentTarget.style.background = 'var(--accent-bg)'
                 e.currentTarget.style.boxShadow = '0 4px 14px rgba(59,130,246,0.18)'
                 e.currentTarget.style.transform = 'translateY(-1px)'
@@ -99,7 +99,7 @@ export default function Hero({ sinhala }: HeroProps) {
                 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = 'var(--accent)'
-                  e.currentTarget.style.color = 'var(--accent)'
+                  e.currentTarget.style.color = 'var(--accent-text)'
                   e.currentTarget.style.background = 'var(--accent-bg)'
                   e.currentTarget.style.boxShadow = '0 4px 14px rgba(59,130,246,0.18)'
                   e.currentTarget.style.transform = 'translateY(-1px)'

@@ -42,11 +42,11 @@ export function ContactPopup({ onClose }: { onClose: () => void }) {
             style={{
               flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
               fontSize: 13, fontWeight: 500, color: '#fff',
-              background: 'var(--accent)', border: '1px solid var(--accent)',
+              background: 'var(--accent-solid)', border: '1px solid var(--accent-solid)',
               borderRadius: 8, padding: '9px 0', transition: 'background 0.15s',
             }}
-            onMouseEnter={e => e.currentTarget.style.background = 'var(--accent-hover)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'var(--accent)'}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--accent-solid-hover)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'var(--accent-solid)'}
           >
             <Mail size={14} /> Email me
           </a>
@@ -59,7 +59,7 @@ export function ContactPopup({ onClose }: { onClose: () => void }) {
             }}
             onMouseEnter={e => {
               e.currentTarget.style.borderColor = 'var(--accent)'
-              e.currentTarget.style.color = 'var(--accent)'
+              e.currentTarget.style.color = 'var(--accent-text)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.borderColor = 'var(--border)'
@@ -104,7 +104,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 title={label}
                 style={{ color: 'var(--text-muted)', transition: 'color 0.15s' }}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-text)'}
                 onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
               >
                 <Icon size={18} />

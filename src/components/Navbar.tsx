@@ -102,7 +102,7 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
             }}
             onMouseEnter={e => {
               e.currentTarget.style.borderColor = 'var(--accent)'
-              e.currentTarget.style.color = 'var(--accent)'
+              e.currentTarget.style.color = 'var(--accent-text)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.borderColor = 'var(--border)'

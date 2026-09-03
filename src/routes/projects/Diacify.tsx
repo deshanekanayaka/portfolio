@@ -54,7 +54,7 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
           </p>
           <div style={{ display: 'flex', gap: 10, marginBottom: 20, flexWrap: 'wrap' }}>
             <a href="https://diacify.vercel.app/" target="_blank" rel="noopener noreferrer"
-              style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, fontWeight: 500, color: '#fff', background: 'var(--accent)', borderRadius: 6, padding: '7px 14px' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, fontWeight: 500, color: '#fff', background: 'var(--accent-solid)', borderRadius: 6, padding: '7px 14px' }}>
               View live <ExternalLink size={12} />
             </a>
             <a href="https://github.com/deshanekanayaka/diacify" target="_blank" rel="noopener noreferrer"
@@ -64,11 +64,11 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
           </div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 36 }}>
             {stack.map(s => (
-              <span key={s} style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent)', background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', borderRadius: 4, padding: '2px 8px' }}>{s}</span>
+              <span key={s} style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent-text)', background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', borderRadius: 4, padding: '2px 8px' }}>{s}</span>
             ))}
           </div>
           <blockquote style={{ borderLeft: '3px solid var(--accent)', background: 'var(--accent-bg)', borderRadius: '0 8px 8px 0', padding: '16px 20px', marginBottom: 36 }}>
-            <p style={{ fontSize: 15, fontStyle: 'italic', color: 'var(--accent)', lineHeight: 1.7 }}>
+            <p style={{ fontSize: 15, fontStyle: 'italic', color: 'var(--accent-text)', lineHeight: 1.7 }}>
               "This project started as my university final year project. For the implementation component I received 53%. Every single criticism in the examiner feedback was valid."
             </p>
           </blockquote>
@@ -103,7 +103,7 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
             ))}
           </div>
           <a href="https://diacify.vercel.app/" target="_blank" rel="noopener noreferrer"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 500, color: '#fff', background: 'var(--accent)', borderRadius: 8, padding: '10px 22px' }}>
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 500, color: '#fff', background: 'var(--accent-solid)', borderRadius: 8, padding: '10px 22px' }}>
             View the live system <ExternalLink size={14} />
           </a>
         </div>

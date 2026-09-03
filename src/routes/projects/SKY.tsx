@@ -40,7 +40,7 @@ export default function SKYCaseStudy({ theme, onToggleTheme }: Props) {
           </p>
           <div style={{ display: 'flex', gap: 10, marginBottom: 20, flexWrap: 'wrap' }}>
             <a href="https://web-production-8ef73.up.railway.app/login/" target="_blank" rel="noopener noreferrer"
-              style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, fontWeight: 500, color: '#fff', background: 'var(--accent)', borderRadius: 6, padding: '7px 14px' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, fontWeight: 500, color: '#fff', background: 'var(--accent-solid)', borderRadius: 6, padding: '7px 14px' }}>
               View live <ExternalLink size={12} />
             </a>
             <a href="https://github.com/deshanekanayaka/Software-Development-Group-Project" target="_blank" rel="noopener noreferrer"
@@ -50,11 +50,11 @@ export default function SKYCaseStudy({ theme, onToggleTheme }: Props) {
           </div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 36 }}>
             {stack.map(s => (
-              <span key={s} style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent)', background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', borderRadius: 4, padding: '2px 8px' }}>{s}</span>
+              <span key={s} style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent-text)', background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', borderRadius: 4, padding: '2px 8px' }}>{s}</span>
             ))}
           </div>
           <div style={{ background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', borderRadius: 10, padding: '18px 20px', marginBottom: 36 }}>
-            <p style={{ fontSize: 14, color: 'var(--accent)', lineHeight: 1.75 }}>
+            <p style={{ fontSize: 14, color: 'var(--accent-text)', lineHeight: 1.75 }}>
               Built as a 5-person agile team for a real SKY Engineering client, implementing the Spotify Squad Health Check model.
               The application supports four user tiers — team member, team lead, admin, and viewer.
             </p>

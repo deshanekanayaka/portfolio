@@ -8,9 +8,15 @@
   --border-hover: #BFDBFE;
   --text-primary: #0F172A;
   --text-muted: #3F4756;
-  --text-faint: #94A3B8;
-  --text-stack: #3B82F6;
+  --text-faint: #5B6472;
+  --text-stack: #1D4ED8;
+  /* --accent is a surface/border colour only: 3.68:1 on white, which clears
+     the 3:1 non-text threshold but fails 4.5:1 for text. Use --accent-text
+     for blue text and --accent-solid behind white text. */
   --accent: #3B82F6;
+  --accent-text: #1D4ED8;
+  --accent-solid: #1D4ED8;
+  --accent-solid-hover: #1E40AF;
   --accent-hover: #2563EB;
   --accent-bg: #EFF6FF;
   --accent-border: #BFDBFE;
@@ -25,9 +31,12 @@
   --border-hover: #3B82F6;
   --text-primary: #F1F5F9;
   --text-muted: #94A3B8;
-  --text-faint: #64748B;
-  --text-stack: #60A5FA;
+  --text-faint: #8A94A6;
+  --text-stack: #93C5FD;
   --accent: #3B82F6;
+  --accent-text: #93C5FD;
+  --accent-solid: #1D4ED8;
+  --accent-solid-hover: #1E40AF;
   --accent-hover: #60A5FA;
   --accent-bg: #0F1B2D;
   --accent-border: #1E3A5F;

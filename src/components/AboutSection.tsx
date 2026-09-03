@@ -57,13 +57,13 @@ export default function AboutSection() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <Icon size={14} style={{ color: 'var(--accent)' }} />
+                  <Icon size={14} style={{ color: 'var(--accent-text)' }} />
                 </div>
                 <div style={{ paddingTop: 3 }}>
                   {link ? (
                     <a href={link} target="_blank" rel="noopener noreferrer"
                       style={{ fontSize: 16, fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.6, transition: 'color 0.15s' }}
-                      onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                      onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-text)'}
                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
                     >
                       {text}
