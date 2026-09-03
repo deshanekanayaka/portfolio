@@ -6,7 +6,6 @@ export interface ProjectData {
   title: string
   description: string
   lead?: string
-  bullets?: string[]
   typeBadge: string
   statBadge: string
   stack: string[]
@@ -39,7 +38,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           position: 'relative',
           overflow: 'hidden',
           height: '100%',
-          minHeight: 460,
+          minHeight: 400,
         }}
       >
         {project.screenshot && (
@@ -105,22 +104,9 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         </div>
 
         {/* Description */}
-        {project.lead && project.bullets ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: 2 }}>
-              {project.lead}
-            </p>
-            {project.bullets.map(bullet => (
-              <p key={bullet} style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
-                {bullet}
-              </p>
-            ))}
-          </div>
-        ) : (
-          <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>
-            {project.description}
-          </p>
-        )}
+        <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>
+          {project.lead ?? project.description}
+        </p>
 
         {/* Tech stack pills */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
