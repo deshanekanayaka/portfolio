@@ -36,6 +36,8 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           display: 'flex', flexDirection: 'column', gap: 12,
           position: 'relative',
           overflow: 'hidden',
+          height: '100%',
+          minHeight: 420,
         }}
       >
         {project.screenshot && (
@@ -101,13 +103,13 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         </div>
 
         {/* Description */}
-        <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65, flex: 1 }}>
+        <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>
           {project.description}
         </p>
 
         {/* Tech stack pills */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
-          {project.stack.map(tech => (
+          {project.stack.slice(0, 5).map(tech => (
             <span key={tech} style={{
               fontSize: 12,
               fontWeight: 500,
@@ -119,10 +121,22 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               whiteSpace: 'nowrap',
             }}>{tech}</span>
           ))}
+          {project.stack.length > 5 && (
+            <span style={{
+              fontSize: 12,
+              fontWeight: 500,
+              padding: '4px 10px',
+              borderRadius: 6,
+              border: '1px solid var(--border)',
+              background: 'var(--surface-raised)',
+              color: 'var(--text-faint)',
+              whiteSpace: 'nowrap',
+            }}>+{project.stack.length - 5}</span>
+          )}
         </div>
 
         {/* Buttons */}
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 'auto' }}>
               {project.caseStudy && (
                   <button
                       onClick={() => navigate(project.caseStudy!)}
@@ -184,7 +198,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                   GitHub
               </a>
 
-              {project.demo ? (
+              {project.demo && (
                   <a
                       href={project.demo}
                       target="_blank"
@@ -213,22 +227,6 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                       Live
                       <ExternalLink size={11} />
                   </a>
-              ) : (
-                  <span
-                      style={{
-                          fontSize: 12,
-                          fontWeight: 500,
-                          color: 'var(--text-faint)',
-                          border: '1px dashed var(--border)',
-                          borderRadius: 6,
-                          padding: '6px 13px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 5,
-                      }}
-                  >
-      Demo coming soon
-    </span>
               )}
           </div>
       </div>
