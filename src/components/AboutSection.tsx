@@ -4,7 +4,6 @@ const credentials = [
   {
     icon: Briefcase,
     text: 'FlyRank AI Internship, Backend AI Engineering track — Jun 2026 to present',
-    detail: 'Structured programme covering RAG, agents, and API design, with mentor-reviewed assignments. Five completed: REST and SQLite CRUD services, containerised stack, auth, and a rate-limited scraper.',
     link: 'https://internship.flyrank.ai/tracks/be',
   },
   { icon: GraduationCap, text: 'University of Westminster — BSc Hons Computer Science (2026)' },
@@ -50,7 +49,7 @@ export default function AboutSection() {
             marginBottom: 32,
           }}>education & programs.</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            {credentials.map(({ icon: Icon, text, detail, link }) => (
+            {credentials.map(({ icon: Icon, text, link }) => (
               <div key={text} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{
                   width: 28, height: 28, borderRadius: 6,
@@ -73,11 +72,6 @@ export default function AboutSection() {
                     <span style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {text}
                     </span>
-                  )}
-                  {detail && (
-                    <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, marginTop: 6 }}>
-                      {detail}
-                    </p>
                   )}
                 </div>
               </div>
