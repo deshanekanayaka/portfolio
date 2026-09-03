@@ -2,43 +2,7 @@ import { useEffect } from 'react'
 
 export default function LightSVG() {
   useEffect(() => {
-    // A — CONSTELLATION STAR HOVER
-    const starData = [
-      { id: 'star-1-light', cx: 80,  cy: 160, origR: 4   },
-      { id: 'star-2-light', cx: 180, cy: 100, origR: 3.5 },
-      { id: 'star-3-light', cx: 280, cy: 140, origR: 3   },
-      { id: 'star-4-light', cx: 340, cy: 80,  origR: 4.5 },
-      { id: 'star-5-light', cx: 420, cy: 120, origR: 2.5 },
-      { id: 'star-6-light', cx: 240, cy: 60,  origR: 2   },
-      { id: 'star-7-light', cx: 310, cy: 200, origR: 2.5 },
-    ]
-
-    const handleStarMove = (e: MouseEvent) => {
-      const vw = window.innerWidth
-      const vh = window.innerHeight
-      const scale = Math.max(vw / 1200, vh / 800)
-      const offsetX = (vw - 1200 * scale) / 2
-      const offsetY = (vh - 800 * scale) / 2
-
-      starData.forEach(({ id, cx, cy, origR }) => {
-        const starVX = cx * scale + offsetX
-        const starVY = cy * scale + offsetY
-        const dist = Math.sqrt((e.clientX - starVX) ** 2 + (e.clientY - starVY) ** 2)
-        const el = document.getElementById(id)
-        if (!el) return
-        if (dist < 80) {
-          el.setAttribute('r', String(origR + 3))
-          el.setAttribute('opacity', '1')
-        } else {
-          el.setAttribute('r', String(origR))
-          el.removeAttribute('opacity')
-        }
-      })
-    }
-
-    document.addEventListener('mousemove', handleStarMove)
-
-    // B — GUITAR STRING PLUCK
+    // A — GUITAR STRING PLUCK
     const stringIds = Array.from({ length: 8 }, (_, i) => `string-${i + 1}-light`)
     const stringCleanups: Array<() => void> = []
 
@@ -122,7 +86,6 @@ export default function LightSVG() {
     document.addEventListener('mousemove', handleParticle)
 
     return () => {
-      document.removeEventListener('mousemove', handleStarMove)
       window.removeEventListener('mousemove', handleMoonMove)
       document.removeEventListener('mousemove', handleParticle)
       stringCleanups.forEach(fn => fn())
@@ -155,7 +118,7 @@ export default function LightSVG() {
           </filter>
         </defs>
 
-        <g opacity="0.18">
+        <g opacity="0.10">
           {/* CRESCENT MOON — top right, large */}
           <g id="moon-group-light">
             <circle cx="1080" cy="120" r="160" fill="none" stroke="#94A3B8" strokeWidth="1.5"/>
@@ -196,44 +159,15 @@ export default function LightSVG() {
           <circle cx="870" cy="250" r="1.5" fill="#3B82F6"/>
           <circle cx="720" cy="310" r="1.8" fill="#3B82F6"/>
 
-          {/* CONSTELLATION — upper left */}
-          <line x1="80" y1="160" x2="180" y2="100" stroke="#94A3B8" strokeWidth="0.7"/>
-          <line x1="180" y1="100" x2="280" y2="140" stroke="#94A3B8" strokeWidth="0.7"/>
-          <line x1="280" y1="140" x2="340" y2="80" stroke="#94A3B8" strokeWidth="0.6"/>
-          <line x1="340" y1="80" x2="420" y2="120" stroke="#94A3B8" strokeWidth="0.6"/>
-          <line x1="180" y1="100" x2="240" y2="60" stroke="#94A3B8" strokeWidth="0.5"/>
-          <line x1="280" y1="140" x2="310" y2="200" stroke="#94A3B8" strokeWidth="0.5"/>
-          {/* Star nodes */}
-          <circle id="star-1-light" cx="80"  cy="160" r="4"   fill="#94A3B8"/>
-          <circle id="star-2-light" cx="180" cy="100" r="3.5" fill="#CBD5E1"/>
-          <circle id="star-3-light" cx="280" cy="140" r="3"   fill="#94A3B8"/>
-          <circle id="star-4-light" cx="340" cy="80"  r="4.5" fill="#CBD5E1"/>
-          <circle id="star-5-light" cx="420" cy="120" r="2.5" fill="#94A3B8"/>
-          <circle id="star-6-light" cx="240" cy="60"  r="2"   fill="#CBD5E1"/>
-          <circle id="star-7-light" cx="310" cy="200" r="2.5" fill="#94A3B8"/>
-          {/* Isolated stars */}
-          <circle cx="520" cy="50"  r="1.5" fill="#94A3B8"/>
-          <circle cx="460" cy="180" r="1"   fill="#94A3B8"/>
-          <circle cx="150" cy="260" r="1.2" fill="#94A3B8"/>
-          <circle cx="620" cy="90"  r="1.8" fill="#94A3B8"/>
-          <circle cx="700" cy="50"  r="1"   fill="#94A3B8"/>
-          <circle cx="50"  cy="80"  r="1.2" fill="#94A3B8"/>
-
           {/* LIGHT BEAM */}
-          <line x1="220" y1="180" x2="780" y2="580" stroke="#3B82F6" strokeWidth="1" opacity="0.9"/>
+          <line x1="220" y1="180" x2="780" y2="580" stroke="#3B82F6" strokeWidth="1" opacity="0.3"/>
           {/* Particles along beam */}
-          <circle cx="280" cy="220" r="2"   fill="#3B82F6" opacity="0.7"/>
-          <circle cx="360" cy="276" r="1.5" fill="#3B82F6" opacity="0.6"/>
-          <circle cx="450" cy="340" r="2.5" fill="#3B82F6" opacity="0.65"/>
-          <circle cx="540" cy="400" r="1.5" fill="#3B82F6" opacity="0.5"/>
-          <circle cx="630" cy="460" r="2"   fill="#3B82F6" opacity="0.45"/>
-          <circle cx="710" cy="516" r="1.5" fill="#3B82F6" opacity="0.35"/>
-          {/* Scattered particles around beam */}
-          <circle cx="300" cy="200" r="1"   fill="#3B82F6" opacity="0.4"/>
-          <circle cx="380" cy="295" r="1.2" fill="#3B82F6" opacity="0.35"/>
-          <circle cx="470" cy="320" r="1"   fill="#3B82F6" opacity="0.3"/>
-          <circle cx="560" cy="380" r="1.2" fill="#3B82F6" opacity="0.3"/>
-          <circle cx="650" cy="440" r="1"   fill="#3B82F6" opacity="0.25"/>
+          <circle cx="280" cy="220" r="2"   fill="#3B82F6" opacity="0.25"/>
+          <circle cx="360" cy="276" r="1.5" fill="#3B82F6" opacity="0.2"/>
+          <circle cx="450" cy="340" r="2.5" fill="#3B82F6" opacity="0.22"/>
+          <circle cx="540" cy="400" r="1.5" fill="#3B82F6" opacity="0.18"/>
+          <circle cx="630" cy="460" r="2"   fill="#3B82F6" opacity="0.15"/>
+          <circle cx="710" cy="516" r="1.5" fill="#3B82F6" opacity="0.12"/>
         </g>
       </svg>
     </>
