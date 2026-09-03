@@ -60,22 +60,22 @@ export default function AboutSection() {
                 }}>
                   <Icon size={14} style={{ color: 'var(--accent)' }} />
                 </div>
-                <div style={{ paddingTop: 4 }}>
+                <div style={{ paddingTop: 3 }}>
                   {link ? (
                     <a href={link} target="_blank" rel="noopener noreferrer"
-                      style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, transition: 'color 0.15s' }}
+                      style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.6, transition: 'color 0.15s' }}
                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                      onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+                      onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
                     >
                       {text}
                     </a>
                   ) : (
-                    <span style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                    <span style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {text}
                     </span>
                   )}
                   {detail && (
-                    <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.6, marginTop: 6 }}>
+                    <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, marginTop: 6 }}>
                       {detail}
                     </p>
                   )}
