@@ -4,7 +4,6 @@ const socials = [
   { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka', download: false },
   { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/', download: false },
   { icon: Mail, label: 'Email', href: 'mailto:deshanekanayake2003@gmail.com', download: false },
-  // TODO: add public/Tharidu_Ekanayaka_CV.pdf before deploy
   { icon: Download, label: 'Download CV', href: '/Tharidu_Ekanayaka_CV.pdf', download: true },
 ]
 
