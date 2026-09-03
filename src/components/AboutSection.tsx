@@ -27,7 +27,7 @@ export default function AboutSection() {
             letterSpacing: '-0.03em', lineHeight: 1,
             marginBottom: 32,
           }}>about.</h2>
-          <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.8 }}>
+          <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '68ch' }}>
             Computer Science graduate from Westminster. I build full-stack
             because I get to care about two very different things at once:
             colours, typography, and interfaces that feel right and work for
