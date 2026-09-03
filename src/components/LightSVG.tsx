@@ -2,6 +2,12 @@ import { useEffect } from 'react'
 
 export default function LightSVG() {
   useEffect(() => {
+    // Skip every motion effect for users who ask for reduced motion, and on
+    // touch devices where hover-driven effects never fire but still cost work.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches
+    if (reducedMotion || coarsePointer) return
+
     // A — GUITAR STRING PLUCK
     const stringIds = Array.from({ length: 8 }, (_, i) => `string-${i + 1}-light`)
     const stringCleanups: Array<() => void> = []

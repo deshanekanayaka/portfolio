@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Github, ExternalLink, FolderOpen, BookOpen } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
@@ -20,6 +20,26 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
   const [hovered, setHovered] = useState(false)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const navigate = useNavigate()
+  const openerRef = useRef<HTMLButtonElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+
+  // Dialog behaviour: focus the close button, close on Escape, lock background
+  // scroll, and hand focus back to the thumbnail that opened it.
+  useEffect(() => {
+    if (!lightboxOpen) return
+    closeRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+      openerRef.current?.focus()
+    }
+  }, [lightboxOpen])
 
   return (
     <>
@@ -42,8 +62,11 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         }}
       >
         {project.screenshot && (
-          <div
+          <button
+            type="button"
+            ref={openerRef}
             onClick={() => setLightboxOpen(true)}
+            aria-label={`View larger screenshot of ${project.title}`}
             style={{
               width: 'calc(100% + 44px)',
               height: 180,
@@ -52,11 +75,19 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               cursor: 'zoom-in',
               margin: '-22px -22px 16px -22px',
               flexShrink: 0,
+              padding: 0,
+              border: 'none',
+              background: 'none',
+              display: 'block',
             }}
           >
             <img
               src={project.screenshot}
               alt={project.title + ' screenshot'}
+              width={1100}
+              height={572}
+              loading="lazy"
+              decoding="async"
               style={{
                 width: '100%',
                 height: '100%',
@@ -68,7 +99,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'}
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
             />
-          </div>
+          </button>
         )}
 
         {/* Title */}
@@ -234,6 +265,9 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
 
       {lightboxOpen && project.screenshot && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${project.title} screenshot`}
           onClick={() => setLightboxOpen(false)}
           style={{
             position: 'fixed',
@@ -262,6 +296,9 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             }}
           />
           <button
+            ref={closeRef}
+            type="button"
+            aria-label="Close image"
             onClick={() => setLightboxOpen(false)}
             style={{
               position: 'absolute',
