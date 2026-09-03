@@ -104,7 +104,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         </div>
 
         {/* Description */}
-        <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>
+        <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.65 }}>
           {project.lead ?? project.description}
         </p>
 
