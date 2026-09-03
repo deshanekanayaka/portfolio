@@ -14,11 +14,10 @@ interface HeroProps {
 export default function Hero({ sinhala }: HeroProps) {
   return (
     <section className="hero-section" style={{
-      minHeight: '70vh',
       display: 'flex',
       alignItems: 'center',
-      paddingTop: 60,
-      paddingBottom: 40,
+      paddingTop: 128,
+      paddingBottom: 56,
     }}>
       <div style={{
         maxWidth: 1080, margin: '0 auto', padding: '0 32px',
