@@ -62,14 +62,14 @@ export default function AboutSection() {
                 <div style={{ paddingTop: 3 }}>
                   {link ? (
                     <a href={link} target="_blank" rel="noopener noreferrer"
-                      style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.6, transition: 'color 0.15s' }}
+                      style={{ fontSize: 16, fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.6, transition: 'color 0.15s' }}
                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
                     >
                       {text}
                     </a>
                   ) : (
-                    <span style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                    <span style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {text}
                     </span>
                   )}
