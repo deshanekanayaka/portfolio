@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Github, ExternalLink, FolderOpen, BookOpen } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 export interface ProjectData {
   title: string
   description: string
+  lead?: string
   typeBadge: string
   statBadge: string
   stack: string[]
@@ -19,6 +20,31 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
   const [hovered, setHovered] = useState(false)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const navigate = useNavigate()
+  const openerRef = useRef<HTMLButtonElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+
+  // Cards render a ~500px-wide slot, the lightbox renders up to 90vw. Shipping
+  // one 1400px file to both wastes ~60KB on the card, so each screenshot is
+  // built at two sizes and the "-full" variant is fetched only when opened.
+  const screenshotFull = project.screenshot?.replace(/\.webp$/, '-full.webp')
+
+  // Dialog behaviour: focus the close button, close on Escape, lock background
+  // scroll, and hand focus back to the thumbnail that opened it.
+  useEffect(() => {
+    if (!lightboxOpen) return
+    closeRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+      openerRef.current?.focus()
+    }
+  }, [lightboxOpen])
 
   return (
     <>
@@ -36,11 +62,16 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           display: 'flex', flexDirection: 'column', gap: 12,
           position: 'relative',
           overflow: 'hidden',
+          height: '100%',
+          minHeight: 400,
         }}
       >
         {project.screenshot && (
-          <div
+          <button
+            type="button"
+            ref={openerRef}
             onClick={() => setLightboxOpen(true)}
+            aria-label={`View larger screenshot of ${project.title}`}
             style={{
               width: 'calc(100% + 44px)',
               height: 180,
@@ -49,11 +80,20 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               cursor: 'zoom-in',
               margin: '-22px -22px 16px -22px',
               flexShrink: 0,
+              padding: 0,
+              border: 'none',
+              background: 'none',
+              display: 'block',
             }}
           >
+            {/* No width/height attributes: the six screenshots have different
+                aspect ratios and the 180px-tall parent plus object-fit: cover
+                fully determines layout, so there is no CLS to guard against. */}
             <img
               src={project.screenshot}
               alt={project.title + ' screenshot'}
+              loading="lazy"
+              decoding="async"
               style={{
                 width: '100%',
                 height: '100%',
@@ -65,7 +105,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'}
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
             />
-          </div>
+          </button>
         )}
 
         {/* Title */}
@@ -78,7 +118,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             {project.flagship && (
               <span style={{
                 fontSize: 10, fontWeight: 500,
-                color: 'var(--accent)', background: 'var(--accent-bg)',
+                color: 'var(--accent-text)', background: 'var(--accent-bg)',
                 border: '1px solid var(--accent-border)',
                 borderRadius: 4, padding: '1px 7px',
               }}>Flagship</span>
@@ -89,7 +129,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         {/* Type + stat badges */}
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           <span style={{
-            fontSize: 11, fontWeight: 500, color: 'var(--accent)',
+            fontSize: 11, fontWeight: 500, color: 'var(--accent-text)',
             background: 'var(--accent-bg)', border: '1px solid var(--accent-border)',
             borderRadius: 4, padding: '2px 8px',
           }}>{project.typeBadge}</span>
@@ -101,13 +141,13 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         </div>
 
         {/* Description */}
-        <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65, flex: 1 }}>
-          {project.description}
+        <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.65 }}>
+          {project.lead ?? project.description}
         </p>
 
         {/* Tech stack pills */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
-          {project.stack.map(tech => (
+          {project.stack.slice(0, 5).map(tech => (
             <span key={tech} style={{
               fontSize: 12,
               fontWeight: 500,
@@ -119,10 +159,22 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               whiteSpace: 'nowrap',
             }}>{tech}</span>
           ))}
+          {project.stack.length > 5 && (
+            <span style={{
+              fontSize: 12,
+              fontWeight: 500,
+              padding: '4px 10px',
+              borderRadius: 6,
+              border: '1px solid var(--border)',
+              background: 'var(--surface-raised)',
+              color: 'var(--text-faint)',
+              whiteSpace: 'nowrap',
+            }}>+{project.stack.length - 5}</span>
+          )}
         </div>
 
         {/* Buttons */}
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 'auto' }}>
               {project.caseStudy && (
                   <button
                       onClick={() => navigate(project.caseStudy!)}
@@ -142,7 +194,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                       }}
                       onMouseEnter={(e) => {
                           e.currentTarget.style.borderColor = 'var(--accent-border)'
-                          e.currentTarget.style.color = 'var(--accent)'
+                          e.currentTarget.style.color = 'var(--accent-text)'
                       }}
                       onMouseLeave={(e) => {
                           e.currentTarget.style.borderColor = 'var(--border)'
@@ -173,7 +225,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                   }}
                   onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = 'var(--accent-border)'
-                      e.currentTarget.style.color = 'var(--accent)'
+                      e.currentTarget.style.color = 'var(--accent-text)'
                   }}
                   onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = 'var(--border)'
@@ -184,7 +236,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                   GitHub
               </a>
 
-              {project.demo ? (
+              {project.demo && (
                   <a
                       href={project.demo}
                       target="_blank"
@@ -193,8 +245,8 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                           fontSize: 12,
                           fontWeight: 500,
                           color: '#fff',
-                          background: 'var(--accent)',
-                          border: '1px solid var(--accent)',
+                          background: 'var(--accent-solid)',
+                          border: '1px solid var(--accent-solid)',
                           borderRadius: 6,
                           padding: '6px 13px',
                           display: 'flex',
@@ -204,37 +256,24 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                           textDecoration: 'none',
                       }}
                       onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'var(--accent-hover)'
+                          e.currentTarget.style.background = 'var(--accent-solid-hover)'
                       }}
                       onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'var(--accent)'
+                          e.currentTarget.style.background = 'var(--accent-solid)'
                       }}
                   >
                       Live
                       <ExternalLink size={11} />
                   </a>
-              ) : (
-                  <span
-                      style={{
-                          fontSize: 12,
-                          fontWeight: 500,
-                          color: 'var(--text-faint)',
-                          border: '1px dashed var(--border)',
-                          borderRadius: 6,
-                          padding: '6px 13px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 5,
-                      }}
-                  >
-      Demo coming soon
-    </span>
               )}
           </div>
       </div>
 
       {lightboxOpen && project.screenshot && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${project.title} screenshot`}
           onClick={() => setLightboxOpen(false)}
           style={{
             position: 'fixed',
@@ -250,7 +289,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           }}
         >
           <img
-            src={project.screenshot}
+            src={screenshotFull}
             alt={project.title + ' screenshot'}
             onClick={e => e.stopPropagation()}
             style={{
@@ -263,6 +302,9 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             }}
           />
           <button
+            ref={closeRef}
+            type="button"
+            aria-label="Close image"
             onClick={() => setLightboxOpen(false)}
             style={{
               position: 'absolute',

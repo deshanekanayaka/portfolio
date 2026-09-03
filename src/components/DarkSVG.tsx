@@ -2,43 +2,13 @@ import { useEffect } from 'react'
 
 export default function DarkSVG() {
   useEffect(() => {
-    // A — CONSTELLATION STAR HOVER
-    const starData = [
-      { id: 'star-1-dark', cx: 80,  cy: 160, origR: 4.5 },
-      { id: 'star-2-dark', cx: 180, cy: 100, origR: 4   },
-      { id: 'star-3-dark', cx: 280, cy: 140, origR: 3.5 },
-      { id: 'star-4-dark', cx: 340, cy: 80,  origR: 5   },
-      { id: 'star-5-dark', cx: 420, cy: 120, origR: 3   },
-      { id: 'star-6-dark', cx: 240, cy: 60,  origR: 2.5 },
-      { id: 'star-7-dark', cx: 310, cy: 200, origR: 3   },
-    ]
+    // Skip every motion effect for users who ask for reduced motion, and on
+    // touch devices where hover-driven effects never fire but still cost work.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches
+    if (reducedMotion || coarsePointer) return
 
-    const handleStarMove = (e: MouseEvent) => {
-      const vw = window.innerWidth
-      const vh = window.innerHeight
-      const scale = Math.max(vw / 1200, vh / 800)
-      const offsetX = (vw - 1200 * scale) / 2
-      const offsetY = (vh - 800 * scale) / 2
-
-      starData.forEach(({ id, cx, cy, origR }) => {
-        const starVX = cx * scale + offsetX
-        const starVY = cy * scale + offsetY
-        const dist = Math.sqrt((e.clientX - starVX) ** 2 + (e.clientY - starVY) ** 2)
-        const el = document.getElementById(id)
-        if (!el) return
-        if (dist < 80) {
-          el.setAttribute('r', String(origR + 3))
-          el.setAttribute('opacity', '1')
-        } else {
-          el.setAttribute('r', String(origR))
-          el.removeAttribute('opacity')
-        }
-      })
-    }
-
-    document.addEventListener('mousemove', handleStarMove)
-
-    // B — GUITAR STRING PLUCK
+    // A — GUITAR STRING PLUCK
     const stringIds = Array.from({ length: 8 }, (_, i) => `string-${i + 1}-dark`)
     const stringCleanups: Array<() => void> = []
 
@@ -122,7 +92,6 @@ export default function DarkSVG() {
     document.addEventListener('mousemove', handleParticle)
 
     return () => {
-      document.removeEventListener('mousemove', handleStarMove)
       window.removeEventListener('mousemove', handleMoonMove)
       document.removeEventListener('mousemove', handleParticle)
       stringCleanups.forEach(fn => fn())
@@ -160,7 +129,7 @@ export default function DarkSVG() {
           </linearGradient>
         </defs>
 
-        <g opacity="0.22">
+        <g opacity="0.14">
           {/* CRESCENT MOON — top right */}
           <g id="moon-group-dark">
             <circle cx="1080" cy="120" r="160" fill="none" stroke="#A8B8CC" strokeWidth="2"/>
@@ -201,48 +170,16 @@ export default function DarkSVG() {
           <circle cx="870" cy="250" r="2"   fill="#60A5FA"/>
           <circle cx="720" cy="310" r="2.3" fill="#60A5FA"/>
 
-          {/* CONSTELLATION */}
-          <line x1="80" y1="160" x2="180" y2="100" stroke="#A8B8CC" strokeWidth="1"/>
-          <line x1="180" y1="100" x2="280" y2="140" stroke="#A8B8CC" strokeWidth="1"/>
-          <line x1="280" y1="140" x2="340" y2="80"  stroke="#A8B8CC" strokeWidth="0.9"/>
-          <line x1="340" y1="80"  x2="420" y2="120" stroke="#A8B8CC" strokeWidth="0.9"/>
-          <line x1="180" y1="100" x2="240" y2="60"  stroke="#A8B8CC" strokeWidth="0.8"/>
-          <line x1="280" y1="140" x2="310" y2="200" stroke="#A8B8CC" strokeWidth="0.8"/>
-          {/* Star nodes */}
-          <circle id="star-1-dark" cx="80"  cy="160" r="4.5" fill="#A8B8CC"/>
-          <circle id="star-2-dark" cx="180" cy="100" r="4"   fill="#CBD5E1"/>
-          <circle id="star-3-dark" cx="280" cy="140" r="3.5" fill="#A8B8CC"/>
-          <circle id="star-4-dark" cx="340" cy="80"  r="5"   fill="#CBD5E1"/>
-          <circle id="star-5-dark" cx="420" cy="120" r="3"   fill="#A8B8CC"/>
-          <circle id="star-6-dark" cx="240" cy="60"  r="2.5" fill="#CBD5E1"/>
-          <circle id="star-7-dark" cx="310" cy="200" r="3"   fill="#A8B8CC"/>
-          {/* Isolated stars */}
-          <circle cx="520" cy="50"  r="1.5" fill="#A8B8CC"/>
-          <circle cx="460" cy="180" r="1"   fill="#A8B8CC"/>
-          <circle cx="150" cy="260" r="1.2" fill="#A8B8CC"/>
-          <circle cx="620" cy="90"  r="1.8" fill="#A8B8CC"/>
-          <circle cx="700" cy="50"  r="1"   fill="#A8B8CC"/>
-          <circle cx="50"  cy="80"  r="1.2" fill="#A8B8CC"/>
-
           {/* LIGHT BEAM — glowing for dark theme */}
-          <line x1="220" y1="180" x2="780" y2="580" stroke="url(#beam-grad)" strokeWidth="2.5" filter="url(#dark-glow)"/>
-          <line x1="220" y1="180" x2="780" y2="580" stroke="#ffffff" strokeWidth="0.5" opacity="0.6"/>
+          <line x1="220" y1="180" x2="780" y2="580" stroke="url(#beam-grad)" strokeWidth="2.5" opacity="0.4" filter="url(#dark-glow)"/>
+          <line x1="220" y1="180" x2="780" y2="580" stroke="#ffffff" strokeWidth="0.5" opacity="0.2"/>
           {/* Glowing particles */}
-          <circle cx="280" cy="220" r="3"   fill="#ffffff" opacity="0.8"  filter="url(#dark-glow)"/>
-          <circle cx="360" cy="276" r="2.5" fill="#93C5FD" opacity="0.7"  filter="url(#dark-glow)"/>
-          <circle cx="450" cy="340" r="3.5" fill="#ffffff" opacity="0.75" filter="url(#dark-glow)"/>
-          <circle cx="540" cy="400" r="2"   fill="#93C5FD" opacity="0.6"/>
-          <circle cx="630" cy="460" r="2.5" fill="#ffffff" opacity="0.55"/>
-          <circle cx="710" cy="516" r="2"   fill="#93C5FD" opacity="0.4"/>
-          {/* Scattered particles */}
-          <circle cx="300" cy="200" r="1.5" fill="#ffffff" opacity="0.5"/>
-          <circle cx="380" cy="295" r="1.8" fill="#93C5FD" opacity="0.45"/>
-          <circle cx="470" cy="320" r="1.5" fill="#ffffff" opacity="0.4"/>
-          <circle cx="560" cy="380" r="1.8" fill="#93C5FD" opacity="0.35"/>
-          <circle cx="650" cy="440" r="1.5" fill="#ffffff" opacity="0.3"/>
-          <circle cx="330" cy="240" r="1"   fill="#ffffff" opacity="0.35"/>
-          <circle cx="410" cy="305" r="1.2" fill="#93C5FD" opacity="0.3"/>
-          <circle cx="500" cy="365" r="1"   fill="#ffffff" opacity="0.28"/>
+          <circle cx="280" cy="220" r="3"   fill="#ffffff" opacity="0.3"  filter="url(#dark-glow)"/>
+          <circle cx="360" cy="276" r="2.5" fill="#93C5FD" opacity="0.25" filter="url(#dark-glow)"/>
+          <circle cx="450" cy="340" r="3.5" fill="#ffffff" opacity="0.28" filter="url(#dark-glow)"/>
+          <circle cx="540" cy="400" r="2"   fill="#93C5FD" opacity="0.2"/>
+          <circle cx="630" cy="460" r="2.5" fill="#ffffff" opacity="0.18"/>
+          <circle cx="710" cy="516" r="2"   fill="#93C5FD" opacity="0.14"/>
         </g>
       </svg>
     </>

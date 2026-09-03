@@ -51,30 +51,33 @@ const routes = [
     path: '.',
     title: 'Tharidu Deshan Ekanayaka | Software Engineer, London',
     body: `
-      <section style="min-height:60vh;padding:40px 0 24px">
-        <div style="max-width:1080px;margin:0 auto;padding:0 32px">
-          <h1 style="font-size:42px;font-weight:700;color:#111;letter-spacing:-0.02em;margin:0 0 14px">hi, i'm tharidu.</h1>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <span style="font-size:15px;color:#222;font-weight:500">software engineer · based in london</span>
-            <span style="font-size:15px;color:#222;font-weight:500">bsc (hons) computer science, first class honours · westminster</span>
-            <span style="font-size:15px;color:#444;font-style:italic">fuelled by black coffee · no sugar · no exceptions</span>
+      <a href="#main" class="skip-link">Skip to content</a>
+      <main id="main">
+        <section style="padding:40px 0 24px">
+          <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+            <h1 style="font-size:42px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin:0 0 8px">hi, i'm tharidu. 👋</h1>
+            <div style="display:flex;flex-direction:column;gap:10px;max-width:460px">
+              <span style="font-size:21px;color:var(--text-primary)">software engineer in London</span>
+              <span style="font-size:16px;color:var(--text-muted);line-height:1.5">Backend-leaning full-stack, currently working my way into AI engineering.</span>
+            </div>
+            <h2 style="font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em;margin:26px 0 10px">work.</h2>
+            <ul style="padding-left:18px;margin:0;color:var(--text-muted);font-size:16px;line-height:1.7">
+              ${projectTitles.slice(0,6).map(t => `<li>${t}</li>`).join('')}
+            </ul>
           </div>
-          <h2 style="font-size:20px;font-weight:700;color:#111;letter-spacing:-0.01em;margin:26px 0 10px">my projects.</h2>
-          <ul style="padding-left:18px;margin:0;color:#333;font-size:14px;line-height:1.7">
-            ${projectTitles.slice(0,6).map(t => `<li>${t}</li>`).join('')}
-          </ul>
-        </div>
-      </section>
+        </section>
+      </main>
     `,
   },
   {
     path: 'projects/diacify',
     title: 'Diacify Case Study | Tharidu Deshan Ekanayaka',
     body: `
-      <main style="padding:40px 0">
+      <a href="#main" class="skip-link">Skip to content</a>
+      <main id="main" style="padding:40px 0">
         <div style="max-width:800px;margin:0 auto;padding:0 32px">
-          <h1 style="font-size:28px;font-weight:700;color:#111;letter-spacing:-0.02em;margin:0 0 10px">Diacify · Clinical Decision Support System</h1>
-          <p style="font-size:15px;color:#555;line-height:1.65;margin:0 0 12px">Rebuilt from a 53% university submission into a production-grade three-service system.</p>
+          <h1 style="font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin:0 0 10px">Diacify — Clinical Decision Support System</h1>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin:0 0 12px">Rebuilt from a 53% university submission into a production-grade three-service system.</p>
         </div>
       </main>
     `,
@@ -83,10 +86,11 @@ const routes = [
     path: 'projects/sky-health-check',
     title: 'SKY Engineering Case Study | Tharidu Deshan Ekanayaka',
     body: `
-      <main style="padding:40px 0">
+      <a href="#main" class="skip-link">Skip to content</a>
+      <main id="main" style="padding:40px 0">
         <div style="max-width:800px;margin:0 auto;padding:0 32px">
-          <h1 style="font-size:28px;font-weight:700;color:#111;letter-spacing:-0.02em;margin:0 0 10px">Agile Group Web Application — SKY Engineering</h1>
-          <p style="font-size:15px;color:#555;line-height:1.65;margin:0 0 12px">Full-stack Django 5 app delivered to a live client in a 12-week agile sprint.</p>
+          <h1 style="font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin:0 0 10px">Agile Group Web Application — SKY Engineering</h1>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin:0 0 12px">Full-stack Django 5 app delivered to a live client in a 12-week agile sprint.</p>
         </div>
       </main>
     `,

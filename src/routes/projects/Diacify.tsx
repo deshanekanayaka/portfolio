@@ -34,17 +34,18 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
         <title>Diacify Case Study | Tharidu Deshan Ekanayaka</title>
         <meta name="description" content="Clinical decision support system case study · rebuilt a 53%-graded submission into a production three-service system with 94% Random Forest accuracy." />
       </Helmet>
+      <a href="#main" className="skip-link">Skip to content</a>
       <ScrollProgress />
-      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'var(--surface)', borderBottom: '1px solid var(--border)', padding: '0 32px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <header style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'var(--surface)', borderBottom: '1px solid var(--border)', padding: '0 32px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <button onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontSize: 14, background: 'none', border: 'none', cursor: 'pointer' }}>
           <ArrowLeft size={15} /> Back
         </button>
         <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>tharidu</span>
-        <button onClick={onToggleTheme} style={{ fontSize: 18, background: 'none', border: 'none', cursor: 'pointer' }}>
+        <button onClick={onToggleTheme} type="button" aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'} style={{ fontSize: 18, background: 'none', border: 'none', cursor: 'pointer' }}>
           {theme === 'dark' ? '☀️' : '🌙'}
         </button>
-      </div>
-      <main style={{ paddingTop: 60 }}>
+      </header>
+      <main id="main" tabIndex={-1} style={{ paddingTop: 60 }}>
         <div style={{ maxWidth: 800, margin: '0 auto', padding: '48px 32px 80px' }}>
           <h1 style={{ fontSize: 32, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 12 }}>
             Diacify — Clinical Decision Support System
@@ -54,7 +55,7 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
           </p>
           <div style={{ display: 'flex', gap: 10, marginBottom: 20, flexWrap: 'wrap' }}>
             <a href="https://diacify.vercel.app/" target="_blank" rel="noopener noreferrer"
-              style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, fontWeight: 500, color: '#fff', background: 'var(--accent)', borderRadius: 6, padding: '7px 14px' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, fontWeight: 500, color: '#fff', background: 'var(--accent-solid)', borderRadius: 6, padding: '7px 14px' }}>
               View live <ExternalLink size={12} />
             </a>
             <a href="https://github.com/deshanekanayaka/diacify" target="_blank" rel="noopener noreferrer"
@@ -64,11 +65,11 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
           </div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 36 }}>
             {stack.map(s => (
-              <span key={s} style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent)', background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', borderRadius: 4, padding: '2px 8px' }}>{s}</span>
+              <span key={s} style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent-text)', background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', borderRadius: 4, padding: '2px 8px' }}>{s}</span>
             ))}
           </div>
           <blockquote style={{ borderLeft: '3px solid var(--accent)', background: 'var(--accent-bg)', borderRadius: '0 8px 8px 0', padding: '16px 20px', marginBottom: 36 }}>
-            <p style={{ fontSize: 15, fontStyle: 'italic', color: 'var(--accent)', lineHeight: 1.7 }}>
+            <p style={{ fontSize: 15, fontStyle: 'italic', color: 'var(--accent-text)', lineHeight: 1.7 }}>
               "This project started as my university final year project. For the implementation component I received 53%. Every single criticism in the examiner feedback was valid."
             </p>
           </blockquote>
@@ -103,7 +104,7 @@ export default function DiacifyCaseStudy({ theme, onToggleTheme }: Props) {
             ))}
           </div>
           <a href="https://diacify.vercel.app/" target="_blank" rel="noopener noreferrer"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 500, color: '#fff', background: 'var(--accent)', borderRadius: 8, padding: '10px 22px' }}>
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 500, color: '#fff', background: 'var(--accent-solid)', borderRadius: 8, padding: '10px 22px' }}>
             View the live system <ExternalLink size={14} />
           </a>
         </div>

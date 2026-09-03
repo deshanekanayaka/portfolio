@@ -14,9 +14,20 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
   const [showMeaning, setShowMeaning] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    // rAF-coalesced, and only re-render when the boolean actually flips.
+    let raf: number | null = null
+    const onScroll = () => {
+      if (raf !== null) return
+      raf = requestAnimationFrame(() => {
+        raf = null
+        setScrolled(window.scrollY > 20)
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf !== null) cancelAnimationFrame(raf)
+    }
   }, [])
 
   const links = [
@@ -79,7 +90,7 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
         <div style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
           {links.map(l => (
             <a key={l.label} href={l.href}
-              style={{ fontSize: 14, color: 'var(--text-primary)', opacity: 0.75, transition: 'color 0.15s, opacity 0.15s' }}
+              style={{ fontSize: 16, color: 'var(--text-primary)', opacity: 0.75, transition: 'color 0.15s, opacity 0.15s' }}
               onMouseEnter={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.opacity = '1' }}
               onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.opacity = '0.75' }}
             >{l.label}</a>
@@ -90,7 +101,10 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <button
             onClick={onToggleTheme}
-            title="Toggle theme"
+            type="button"
+            title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-pressed={theme === 'dark'}
             style={{
               width: 36, height: 36,
               border: '1px solid var(--border)',
@@ -102,7 +116,7 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
             }}
             onMouseEnter={e => {
               e.currentTarget.style.borderColor = 'var(--accent)'
-              e.currentTarget.style.color = 'var(--accent)'
+              e.currentTarget.style.color = 'var(--accent-text)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.borderColor = 'var(--border)'
@@ -114,7 +128,10 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
 
           <button
             onClick={onToggleSinhala}
-            title="සිංහල"
+            type="button"
+            title="Switch greeting to Sinhala"
+            aria-label="Switch greeting to Sinhala"
+            aria-pressed={sinhala}
             style={{
               fontSize: 20, background: 'none', border: 'none',
               cursor: 'pointer', lineHeight: 1,
@@ -126,8 +143,12 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
 
         {/* Mobile hamburger */}
         <button onClick={() => setMenuOpen(!menuOpen)}
+          type="button"
           style={{ display: 'none', flexDirection: 'column', gap: 4, padding: 4 }}
-          className="hamburger" aria-label="Toggle menu">
+          className="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu">
           <span style={{ width: 20, height: 2, background: 'var(--text-primary)', borderRadius: 2, display: 'block' }} />
           <span style={{ width: 20, height: 2, background: 'var(--text-primary)', borderRadius: 2, display: 'block' }} />
           <span style={{ width: 20, height: 2, background: 'var(--text-primary)', borderRadius: 2, display: 'block' }} />
@@ -135,7 +156,7 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
       </div>
 
       {menuOpen && (
-        <div style={{
+        <div id="mobile-menu" style={{
           borderTop: '1px solid var(--border)',
           background: 'var(--surface)',
           padding: '16px 32px',
@@ -144,7 +165,7 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
           {links.map(l => (
             <a key={l.label} href={l.href}
               onClick={() => setMenuOpen(false)}
-              style={{ fontSize: 15, color: 'var(--text-muted)' }}>
+              style={{ fontSize: 16, color: 'var(--text-muted)' }}>
               {l.label}
             </a>
           ))}

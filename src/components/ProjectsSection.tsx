@@ -5,6 +5,7 @@ const projects: ProjectData[] = [
   {
     title: 'Diacify — Clinical Decision Support System',
     description: 'ML system that ranks diabetic patients by urgency. Rebuilt from a 53% university submission to 94% Random Forest accuracy.',
+    lead: 'A clinical dashboard that ranks diabetic patients by urgency, so the highest-risk cases surface first. Full-stack ML: model, API, and interface.',
     typeBadge: 'ML · Full-stack',
     statBadge: '94% accuracy',
     stack: ['React 18', 'Node.js', 'FastAPI', 'MySQL 8', 'scikit-learn', 'Docker', 'GitHub Actions'],
@@ -12,17 +13,18 @@ const projects: ProjectData[] = [
     github: 'https://github.com/deshanekanayaka/diacify',
     caseStudy: '/projects/diacify',
     flagship: true,
-    screenshot: '/screenshots/diacify.png',
+    screenshot: '/screenshots/diacify.webp',
   },
   {
     title: 'ClaimLens — AI Damage Claim Triage',
     description: 'Three call LLM pipeline that inspects claim photos against the claimant transcript and returns a structured verdict: supported, contradicted, or not enough information. Red teamed against 12 adversarial scenarios, 8 defects found and fixed.',
+    lead: 'Reads a damage claim, inspects the photos, and returns a verdict on whether the story matches the evidence. The kind of LLM pipeline work an AI engineering role runs on.',
     typeBadge: 'AI · Full-stack',
     statBadge: '8 defects found & fixed',
     stack: ['Next.js 15', 'FastAPI', 'Python', 'Anthropic SDK', 'SQLite', 'TypeScript', 'Tailwind v4'],
     demo: '',
     github: 'https://github.com/deshanekanayaka/claimlens',
-    screenshot: '/screenshots/claimlens.png',
+    screenshot: '/screenshots/claimlens.webp',
   },
   {
     title: 'Agile Group Web Application',
@@ -32,7 +34,7 @@ const projects: ProjectData[] = [
     stack: ['Django 5', 'Python', 'Bootstrap 5', 'SQLite', 'JavaScript'],
     demo: 'https://web-production-8ef73.up.railway.app/login/',
     github: 'https://github.com/deshanekanayaka/Software-Development-Group-Project',
-    screenshot: '/screenshots/sky-health-check.png',
+    screenshot: '/screenshots/sky-health-check.webp',
   },
   {
     title: 'Java REST API + React Frontend',
@@ -42,7 +44,7 @@ const projects: ProjectData[] = [
     stack: ['Spring Boot 3.2', 'PostgreSQL', 'JUnit 5', 'React 18', 'TypeScript'],
     demo: 'https://health-centre-application.vercel.app/',
     github: 'https://github.com/deshanekanayaka/HealthCentreApplication',
-    screenshot: '/screenshots/java-api.png',
+    screenshot: '/screenshots/java-api.webp',
   },
   {
     title: 'Yurjinia — Project Management SPA',
@@ -52,7 +54,7 @@ const projects: ProjectData[] = [
     stack: ['React 19', 'TypeScript', 'TanStack Router', 'Zustand', 'Clerk'],
     demo: 'https://yurjinia-frontend.vercel.app/',
     github: 'https://github.com/deshanekanayaka/Yurjinia-Frontend',
-    screenshot: '/screenshots/yurjinia.png',
+    screenshot: '/screenshots/yurjinia.webp',
   },
   {
     title: 'Potions Guide — TypeScript SPA',
@@ -62,7 +64,7 @@ const projects: ProjectData[] = [
     stack: ['React', 'TypeScript', 'REST API', 'Vite'],
     demo: 'https://potions-guide.vercel.app',
     github: 'https://github.com/deshanekanayaka/Potions-Guide',
-    screenshot: '/screenshots/potions-guide.png',
+    screenshot: '/screenshots/potions-guide.webp',
   },
 ]
 
@@ -82,7 +84,7 @@ export default function ProjectsSection() {
           letterSpacing: '-0.03em', lineHeight: 1,
           marginBottom: 40,
         }}>
-          my projects.
+          work.
         </h2>
 
         {/* Tab toggle — Ted style: pill toggle not underline tabs */}
@@ -98,7 +100,9 @@ export default function ProjectsSection() {
           {(['featured', 'all'] as const).map(t => (
             <button
               key={t}
+              type="button"
               onClick={() => setTab(t)}
+              aria-pressed={tab === t}
               style={{
                 fontSize: 13, fontWeight: 500,
                 padding: '7px 18px',

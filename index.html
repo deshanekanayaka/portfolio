@@ -14,21 +14,39 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tharidu.dev/" />
     <meta property="og:image" content="https://tharidu.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tharidu Ekanayaka, software engineer in London. Backend-leaning full-stack, working into AI engineering." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tharidu Deshan Ekanayaka | Software Engineer, London" />
     <meta name="twitter:description" content="Software engineer in London. First Class CS graduate (Westminster) building full-stack and AI/ML systems. Open to graduate SWE and junior AI/ML roles." />
     <meta name="twitter:image" content="https://tharidu.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Tharidu Ekanayaka, software engineer in London. Backend-leaning full-stack, working into AI engineering." />
 
-    <!-- Fonts -->
+    <!-- Fonts: loaded off the critical path. Weight 300 was never used in the
+         app, so it is no longer requested. display=swap renders text in the
+         system fallback immediately, then swaps to Inter. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     />
-    <!-- TODO: replace public/og-image.png with a designed 1200x630 image before deploying -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -25,6 +25,7 @@ export default function Home({
         <title>Tharidu Deshan Ekanayaka | Software Engineer, London</title>
         <meta name="description" content="Software engineer in London. First Class CS graduate (Westminster) building full-stack and AI/ML systems. Open to graduate SWE and junior AI/ML roles." />
       </Helmet>
+      <a href="#main" className="skip-link">Skip to content</a>
       {theme === 'dark' ? <DarkSVG /> : <LightSVG />}
       <ScrollProgress />
       <Navbar
@@ -33,7 +34,7 @@ export default function Home({
         onToggleTheme={onToggleTheme}
         onToggleSinhala={onToggleSinhala}
       />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero sinhala={sinhala} onToggleSinhala={onToggleSinhala} />
         <ProjectsSection />
         <AboutSection />

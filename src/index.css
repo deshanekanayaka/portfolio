@@ -7,10 +7,16 @@
   --border: #E8EDF4;
   --border-hover: #BFDBFE;
   --text-primary: #0F172A;
-  --text-muted: #64748B;
-  --text-faint: #94A3B8;
-  --text-stack: #3B82F6;
+  --text-muted: #3F4756;
+  --text-faint: #5B6472;
+  --text-stack: #1D4ED8;
+  /* --accent is a surface/border colour only: 3.68:1 on white, which clears
+     the 3:1 non-text threshold but fails 4.5:1 for text. Use --accent-text
+     for blue text and --accent-solid behind white text. */
   --accent: #3B82F6;
+  --accent-text: #1D4ED8;
+  --accent-solid: #1D4ED8;
+  --accent-solid-hover: #1E40AF;
   --accent-hover: #2563EB;
   --accent-bg: #EFF6FF;
   --accent-border: #BFDBFE;
@@ -25,9 +31,12 @@
   --border-hover: #3B82F6;
   --text-primary: #F1F5F9;
   --text-muted: #94A3B8;
-  --text-faint: #64748B;
-  --text-stack: #60A5FA;
+  --text-faint: #8A94A6;
+  --text-stack: #93C5FD;
   --accent: #3B82F6;
+  --accent-text: #93C5FD;
+  --accent-solid: #1D4ED8;
+  --accent-solid-hover: #1E40AF;
   --accent-hover: #60A5FA;
   --accent-bg: #0F1B2D;
   --accent-border: #1E3A5F;
@@ -48,4 +57,38 @@ body {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; font-family: var(--font); border: none; background: none; }
-section + section { border-top: 1px solid var(--border); }
+
+/* Visible focus for keyboard users on every interactive element. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Skip navigation: off-screen until focused. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 500;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 2px solid var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+}
+.skip-link:focus { left: 16px; top: 16px; }
+
+/* Honour reduced-motion: strip transitions/animations and instant scroll.
+   JS-driven effects (particle trail, moon rAF) are gated separately at
+   their source in LightSVG/DarkSVG. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

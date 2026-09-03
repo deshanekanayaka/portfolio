@@ -6,7 +6,7 @@ Live at **[tharidu.dev](https://tharidu.dev)**
 
 ---
 
-![Portfolio screenshot](public/screenshots/portfolio-preview.png)
+![Portfolio screenshot](assets/screenshots-original/portfolio-preview.png)
 
 ---
 
