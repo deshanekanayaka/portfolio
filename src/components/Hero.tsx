@@ -1,10 +1,10 @@
 import { Github, Linkedin, Mail, Download } from 'lucide-react'
 
 const socials = [
-  { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka', download: false },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/', download: false },
-  { icon: Mail, label: 'Email', href: 'mailto:deshanekanayake2003@gmail.com', download: false },
   { icon: Download, label: 'Download CV', href: '/Tharidu_Ekanayaka_CV.pdf', download: true },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/', download: false },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka', download: false },
+  { icon: Mail, label: 'Email', href: 'mailto:deshanekanayake2003@gmail.com', download: false },
 ]
 
 interface HeroProps {
@@ -12,13 +12,14 @@ interface HeroProps {
   onToggleSinhala: () => void
 }
 
-export default function Hero({ sinhala, onToggleSinhala }: HeroProps) {
+export default function Hero({ sinhala }: HeroProps) {
   return (
-    <section style={{
-      minHeight: '100vh',
+    <section className="hero-section" style={{
+      minHeight: '70vh',
       display: 'flex',
       alignItems: 'center',
       paddingTop: 60,
+      paddingBottom: 40,
     }}>
       <div style={{
         maxWidth: 1080, margin: '0 auto', padding: '0 32px',
@@ -34,32 +35,17 @@ export default function Hero({ sinhala, onToggleSinhala }: HeroProps) {
           <h1 style={{
             fontSize: 52, fontWeight: 700, color: 'var(--text-primary)',
             letterSpacing: '-0.025em', lineHeight: 1.0,
-            marginBottom: 22,
+            marginBottom: 18,
           }} className="hero-h1">
-            {sinhala ? 'ආයුබෝවන්, මම තරිදු' : "hi, i'm tharidu."}
+            {sinhala ? 'ආයුබෝවන්, මම තරිදු' : "hi, i'm tharidu. 👋"}
           </h1>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 28 }}>
-            <span style={{ fontSize: 16, color: 'var(--text-primary)', fontWeight: 500 }}>
-              software engineer · based in london{' '}
-              <span
-                style={{ cursor: 'pointer' }}
-                title="ආයුබෝවන්"
-                onClick={onToggleSinhala}
-              ></span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 28, maxWidth: '68ch' }}>
+            <span style={{ fontSize: 16, color: 'var(--text-muted)', fontWeight: 400 }}>
+              software engineer in London
             </span>
-            <span style={{ fontSize: 16, color: 'var(--text-primary)', fontWeight: 500 }}>
-              bsc (hons) computer science, first class honours · westminster
-            </span>
-            <span style={{ fontSize: 16, color: 'var(--text-primary)', fontWeight: 400, fontStyle: 'italic', opacity: 1 }}>
-              fuelled by black coffee · no sugar · no exceptions
-            </span>
-          </div>
-
-          {/* Availability near CTAs */}
-          <div style={{ marginBottom: 10 }}>
-            <span style={{ fontSize: 14, color: 'var(--text-primary)', fontWeight: 500 }}>
-              open to graduate swe and junior ai/ml roles
+            <span style={{ fontSize: 21, fontWeight: 500, lineHeight: 1.4, color: 'var(--text-primary)' }}>
+              Backend-leaning full-stack, currently working my way into AI engineering.
             </span>
           </div>
 
@@ -137,6 +123,7 @@ export default function Hero({ sinhala, onToggleSinhala }: HeroProps) {
 
       <style>{`
         @media (max-width: 768px) {
+          .hero-section { min-height: auto !important; padding-top: 100px !important; }
           .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .hero-photo-wrap { width: 220px !important; height: 275px !important; margin: 0 auto; }
           .hero-h1 { font-size: 36px !important; }
