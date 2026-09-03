@@ -14,9 +14,20 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
   const [showMeaning, setShowMeaning] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    // rAF-coalesced, and only re-render when the boolean actually flips.
+    let raf: number | null = null
+    const onScroll = () => {
+      if (raf !== null) return
+      raf = requestAnimationFrame(() => {
+        raf = null
+        setScrolled(window.scrollY > 20)
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf !== null) cancelAnimationFrame(raf)
+    }
   }, [])
 
   const links = [

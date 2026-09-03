@@ -13,7 +13,7 @@ const projects: ProjectData[] = [
     github: 'https://github.com/deshanekanayaka/diacify',
     caseStudy: '/projects/diacify',
     flagship: true,
-    screenshot: '/screenshots/diacify.png',
+    screenshot: '/screenshots/diacify.webp',
   },
   {
     title: 'ClaimLens — AI Damage Claim Triage',
@@ -24,7 +24,7 @@ const projects: ProjectData[] = [
     stack: ['Next.js 15', 'FastAPI', 'Python', 'Anthropic SDK', 'SQLite', 'TypeScript', 'Tailwind v4'],
     demo: '',
     github: 'https://github.com/deshanekanayaka/claimlens',
-    screenshot: '/screenshots/claimlens.png',
+    screenshot: '/screenshots/claimlens.webp',
   },
   {
     title: 'Agile Group Web Application',
@@ -34,7 +34,7 @@ const projects: ProjectData[] = [
     stack: ['Django 5', 'Python', 'Bootstrap 5', 'SQLite', 'JavaScript'],
     demo: 'https://web-production-8ef73.up.railway.app/login/',
     github: 'https://github.com/deshanekanayaka/Software-Development-Group-Project',
-    screenshot: '/screenshots/sky-health-check.png',
+    screenshot: '/screenshots/sky-health-check.webp',
   },
   {
     title: 'Java REST API + React Frontend',
@@ -44,7 +44,7 @@ const projects: ProjectData[] = [
     stack: ['Spring Boot 3.2', 'PostgreSQL', 'JUnit 5', 'React 18', 'TypeScript'],
     demo: 'https://health-centre-application.vercel.app/',
     github: 'https://github.com/deshanekanayaka/HealthCentreApplication',
-    screenshot: '/screenshots/java-api.png',
+    screenshot: '/screenshots/java-api.webp',
   },
   {
     title: 'Yurjinia — Project Management SPA',
@@ -54,7 +54,7 @@ const projects: ProjectData[] = [
     stack: ['React 19', 'TypeScript', 'TanStack Router', 'Zustand', 'Clerk'],
     demo: 'https://yurjinia-frontend.vercel.app/',
     github: 'https://github.com/deshanekanayaka/Yurjinia-Frontend',
-    screenshot: '/screenshots/yurjinia.png',
+    screenshot: '/screenshots/yurjinia.webp',
   },
   {
     title: 'Potions Guide — TypeScript SPA',
@@ -64,7 +64,7 @@ const projects: ProjectData[] = [
     stack: ['React', 'TypeScript', 'REST API', 'Vite'],
     demo: 'https://potions-guide.vercel.app',
     github: 'https://github.com/deshanekanayaka/Potions-Guide',
-    screenshot: '/screenshots/potions-guide.png',
+    screenshot: '/screenshots/potions-guide.webp',
   },
 ]
 

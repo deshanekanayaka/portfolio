@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import Home from './routes/Home'
-import DiacifyCaseStudy from './routes/projects/Diacify'
-import SKYCaseStudy from './routes/projects/SKY'
+
+// Case studies are split out so the homepage bundle does not carry them.
+const DiacifyCaseStudy = lazy(() => import('./routes/projects/Diacify'))
+const SKYCaseStudy = lazy(() => import('./routes/projects/SKY'))
 
 export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
@@ -33,8 +35,16 @@ export default function App() {
             onToggleSinhala={toggleSinhala}
           />
         } />
-        <Route path="/projects/diacify" element={<DiacifyCaseStudy theme={theme} onToggleTheme={toggleTheme} />} />
-        <Route path="/projects/sky-health-check" element={<SKYCaseStudy theme={theme} onToggleTheme={toggleTheme} />} />
+        <Route path="/projects/diacify" element={
+          <Suspense fallback={null}>
+            <DiacifyCaseStudy theme={theme} onToggleTheme={toggleTheme} />
+          </Suspense>
+        } />
+        <Route path="/projects/sky-health-check" element={
+          <Suspense fallback={null}>
+            <SKYCaseStudy theme={theme} onToggleTheme={toggleTheme} />
+          </Suspense>
+        } />
       </Routes>
     </BrowserRouter>
   )

@@ -21,13 +21,28 @@
     <meta name="twitter:description" content="Software engineer in London. First Class CS graduate (Westminster) building full-stack and AI/ML systems. Open to graduate SWE and junior AI/ML roles." />
     <meta name="twitter:image" content="https://tharidu.dev/og-image.png" />
 
-    <!-- Fonts -->
+    <!-- Fonts: loaded off the critical path. Weight 300 was never used in the
+         app, so it is no longer requested. display=swap renders text in the
+         system fallback immediately, then swaps to Inter. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
     <!-- TODO: replace public/og-image.png with a designed 1200x630 image before deploying -->
   </head>
   <body>

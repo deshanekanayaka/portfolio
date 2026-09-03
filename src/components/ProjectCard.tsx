@@ -81,11 +81,12 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               display: 'block',
             }}
           >
+            {/* No width/height attributes: the six screenshots have different
+                aspect ratios and the 180px-tall parent plus object-fit: cover
+                fully determines layout, so there is no CLS to guard against. */}
             <img
               src={project.screenshot}
               alt={project.title + ' screenshot'}
-              width={1100}
-              height={572}
               loading="lazy"
               decoding="async"
               style={{
