@@ -24,7 +24,7 @@ export function Footer() {
             {[
               { icon: Linkedin, href: 'https://www.linkedin.com/in/thariduekanayaka/', label: 'LinkedIn' },
               { icon: Github, href: 'https://github.com/deshanekanayaka', label: 'GitHub' },
-              { icon: Mail, href: 'mailto:deshan.ekan@gamil.com', label: 'Email' },
+              { icon: Mail, href: 'mailto:deshan.ekan@gmail.com', label: 'Email' },
             ].map(({ icon: Icon, href, label }) => (
               <a key={label} href={href}
                 target={label !== 'Email' ? '_blank' : undefined}

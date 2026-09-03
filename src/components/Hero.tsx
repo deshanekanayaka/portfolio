@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Download } from 'lucide-react'
 const iconSocials = [
   { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/' },
   { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka' },
-  { icon: Mail, label: 'Email', href: 'mailto:deshan.ekan@gamil.com' },
+  { icon: Mail, label: 'Email', href: 'mailto:deshan.ekan@gmail.com' },
 ]
 
 interface HeroProps {
