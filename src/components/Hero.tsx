@@ -1,10 +1,9 @@
 import { Github, Linkedin, Mail, Download } from 'lucide-react'
 
-const socials = [
-  { icon: Download, label: 'Download CV', href: '/Tharidu_Ekanayaka_CV.pdf', download: true },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/', download: false },
-  { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka', download: false },
-  { icon: Mail, label: 'Email', href: 'mailto:deshan.ekan@gamil.com', download: false },
+const iconSocials = [
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka' },
+  { icon: Mail, label: 'Email', href: 'mailto:deshan.ekan@gamil.com' },
 ]
 
 interface HeroProps {
@@ -35,36 +34,68 @@ export default function Hero({ sinhala }: HeroProps) {
           <h1 style={{
             fontSize: 52, fontWeight: 700, color: 'var(--text-primary)',
             letterSpacing: '-0.025em', lineHeight: 1.0,
-            marginBottom: 18,
+            marginBottom: 8,
           }} className="hero-h1">
             {sinhala ? 'ආයුබෝවන්, මම තරිදු' : "hi, i'm tharidu. 👋"}
           </h1>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 28, maxWidth: '68ch' }}>
-            <span style={{ fontSize: 16, color: 'var(--text-muted)', fontWeight: 400 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, maxWidth: 460 }}>
+            <span style={{ fontSize: 21, fontWeight: 400, color: 'var(--text-primary)' }}>
               software engineer in London
             </span>
-            <span style={{ fontSize: 21, fontWeight: 500, lineHeight: 1.4, color: 'var(--text-primary)' }}>
+            <span style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.5, color: 'var(--text-muted)' }}>
               Backend-leaning full-stack, currently working my way into AI engineering.
             </span>
           </div>
 
           {/* Socials */}
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            {socials.map(({ icon: Icon, label, href, download }) => (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+            <a href="/Tharidu_Ekanayaka_CV.pdf" download
+              title="Download CV"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                padding: '9px 18px',
+                border: '1.5px solid var(--border)',
+                borderRadius: 10,
+                background: 'var(--surface)',
+                color: 'var(--text-primary)',
+                fontSize: 13, fontWeight: 500,
+                transition: 'all 0.15s ease',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'var(--accent)'
+                e.currentTarget.style.color = 'var(--accent)'
+                e.currentTarget.style.background = 'var(--accent-bg)'
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(59,130,246,0.18)'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'var(--border)'
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.background = 'var(--surface)'
+                e.currentTarget.style.boxShadow = '0 2px 6px rgba(0,0,0,0.06)'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <Download size={15} />
+              Download CV
+            </a>
+
+            {iconSocials.map(({ icon: Icon, label, href }) => (
               <a key={label} href={href}
-                {...(download ? { download: true } : { target: '_blank', rel: 'noopener noreferrer' })}
+                target="_blank" rel="noopener noreferrer"
                 title={label}
+                aria-label={label}
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 8,
-                  padding: '9px 18px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  width: 38, height: 38,
                   border: '1.5px solid var(--border)',
                   borderRadius: 10,
                   background: 'var(--surface)',
                   color: 'var(--text-primary)',
-                  fontSize: 13, fontWeight: 500,
                   transition: 'all 0.15s ease',
-                  whiteSpace: 'nowrap',
                   boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
                 }}
                 onMouseEnter={e => {
@@ -82,8 +113,7 @@ export default function Hero({ sinhala }: HeroProps) {
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
-                <Icon size={15} />
-                {label}
+                <Icon size={16} />
               </a>
             ))}
           </div>
