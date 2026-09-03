@@ -1,12 +1,9 @@
-import { GraduationCap, Star, Code2, Database, Briefcase } from 'lucide-react'
+import { GraduationCap, Star } from 'lucide-react'
 
 const credentials = [
   { icon: GraduationCap, text: 'University of Westminster — BSc Hons Computer Science (2026)' },
   { icon: Star, text: 'Westminster Award Bronze — April 2026' },
   { icon: GraduationCap, text: 'Meta Front-End Professional Certificate — Jan 2024' },
-  { icon: Code2, text: 'Responsive Web Design, freeCodeCamp — Apr 2024' },
-  { icon: Database, text: 'SQL (Basic), HackerRank — Jul 2024' },
-  { icon: Briefcase, text: 'Heathrow IT Virtual Work Experience — May 2026' },
 ]
 
 export default function AboutSection() {
