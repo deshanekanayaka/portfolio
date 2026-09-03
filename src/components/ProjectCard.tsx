@@ -23,6 +23,11 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
   const openerRef = useRef<HTMLButtonElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
 
+  // Cards render a ~500px-wide slot, the lightbox renders up to 90vw. Shipping
+  // one 1400px file to both wastes ~60KB on the card, so each screenshot is
+  // built at two sizes and the "-full" variant is fetched only when opened.
+  const screenshotFull = project.screenshot?.replace(/\.webp$/, '-full.webp')
+
   // Dialog behaviour: focus the close button, close on Escape, lock background
   // scroll, and hand focus back to the thumbnail that opened it.
   useEffect(() => {
@@ -284,7 +289,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           }}
         >
           <img
-            src={project.screenshot}
+            src={screenshotFull}
             alt={project.title + ' screenshot'}
             onClick={e => e.stopPropagation()}
             style={{

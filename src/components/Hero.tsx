@@ -130,10 +130,12 @@ export default function Hero({ sinhala }: HeroProps) {
           position: 'relative',
         }}>
           <img
-            src="/photo.jpg"
+            src="/photo.webp"
             alt="Tharidu Ekanayaka"
             width={640}
             height={641}
+            // This is the LCP element, so it must not be lazy or deprioritised.
+            fetchPriority="high"
             decoding="async"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
             onError={e => {
