@@ -1,6 +1,12 @@
-import { GraduationCap, Star } from 'lucide-react'
+import { GraduationCap, Star, Briefcase } from 'lucide-react'
 
 const credentials = [
+  {
+    icon: Briefcase,
+    text: 'FlyRank AI Internship, Backend AI Engineering track — Jun 2026 to present',
+    detail: 'Structured programme covering RAG, agents, and API design, with mentor-reviewed assignments. Five completed: REST and SQLite CRUD services, containerised stack, auth, and a rate-limited scraper.',
+    link: 'https://internship.flyrank.ai/tracks/be',
+  },
   { icon: GraduationCap, text: 'University of Westminster — BSc Hons Computer Science (2026)' },
   { icon: Star, text: 'Westminster Award Bronze — April 2026' },
   { icon: GraduationCap, text: 'Meta Front-End Professional Certificate — Jan 2024' },
@@ -42,9 +48,9 @@ export default function AboutSection() {
             fontSize: 48, fontWeight: 700, color: 'var(--text-primary)',
             letterSpacing: '-0.03em', lineHeight: 1,
             marginBottom: 32,
-          }}>education.</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            {credentials.map(({ icon: Icon, text }) => (
+          }}>education & programs.</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            {credentials.map(({ icon: Icon, text, detail, link }) => (
               <div key={text} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{
                   width: 28, height: 28, borderRadius: 6,
@@ -54,9 +60,26 @@ export default function AboutSection() {
                 }}>
                   <Icon size={14} style={{ color: 'var(--accent)' }} />
                 </div>
-                <span style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, paddingTop: 4 }}>
-                  {text}
-                </span>
+                <div style={{ paddingTop: 4 }}>
+                  {link ? (
+                    <a href={link} target="_blank" rel="noopener noreferrer"
+                      style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, transition: 'color 0.15s' }}
+                      onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                      onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+                    >
+                      {text}
+                    </a>
+                  ) : (
+                    <span style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                      {text}
+                    </span>
+                  )}
+                  {detail && (
+                    <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.6, marginTop: 6 }}>
+                      {detail}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
