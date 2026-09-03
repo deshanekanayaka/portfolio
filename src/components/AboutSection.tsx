@@ -25,14 +25,17 @@ export default function AboutSection() {
             marginBottom: 32,
           }}>about.</h2>
           <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '68ch' }}>
-            Computer Science graduate from Westminster. I build full-stack
-            because I get to care about two very different things at once:
-            colours, typography, and interfaces that feel right and work for
-            everyone, and on the other side, authentication that holds up,
-            normalised schemas, and APIs that handle failure as gracefully
-            as success. I enjoy understanding how each piece connects, from
-            the database query to the pixel on screen. Open to junior
-            software engineering and adjacent technical roles in London.
+            I build systems that assume the model will be wrong. Every pipeline I ship has
+            a defined behaviour for an empty retrieval, a rejected schema, and a failed
+            tool call, plus a log line that says which one happened. ClaimLens returns
+            NOT ENOUGH INFO rather than guessing. Diacify surfaces its confidence rather
+            than hiding it. Most of my engineering time goes into the paths nobody demos.
+          </p>
+          <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '68ch', marginTop: 20 }}>
+            Currently building Retell, a daily voice practice tool for interview answers.
+          </p>
+          <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '68ch', marginTop: 20 }}>
+            Fuelled by black coffee. No sugar, no exceptions.
           </p>
         </div>
 
