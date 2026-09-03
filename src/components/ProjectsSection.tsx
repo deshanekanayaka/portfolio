@@ -82,7 +82,7 @@ export default function ProjectsSection() {
           letterSpacing: '-0.03em', lineHeight: 1,
           marginBottom: 40,
         }}>
-          my projects.
+          work.
         </h2>
 
         {/* Tab toggle — Ted style: pill toggle not underline tabs */}
