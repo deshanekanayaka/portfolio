@@ -90,7 +90,10 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <button
             onClick={onToggleTheme}
-            title="Toggle theme"
+            type="button"
+            title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-pressed={theme === 'dark'}
             style={{
               width: 36, height: 36,
               border: '1px solid var(--border)',
@@ -114,8 +117,10 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
 
           <button
             onClick={onToggleSinhala}
+            type="button"
             title="Switch greeting to Sinhala"
             aria-label="Switch greeting to Sinhala"
+            aria-pressed={sinhala}
             style={{
               fontSize: 20, background: 'none', border: 'none',
               cursor: 'pointer', lineHeight: 1,
@@ -127,8 +132,12 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
 
         {/* Mobile hamburger */}
         <button onClick={() => setMenuOpen(!menuOpen)}
+          type="button"
           style={{ display: 'none', flexDirection: 'column', gap: 4, padding: 4 }}
-          className="hamburger" aria-label="Toggle menu">
+          className="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu">
           <span style={{ width: 20, height: 2, background: 'var(--text-primary)', borderRadius: 2, display: 'block' }} />
           <span style={{ width: 20, height: 2, background: 'var(--text-primary)', borderRadius: 2, display: 'block' }} />
           <span style={{ width: 20, height: 2, background: 'var(--text-primary)', borderRadius: 2, display: 'block' }} />
@@ -136,7 +145,7 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
       </div>
 
       {menuOpen && (
-        <div style={{
+        <div id="mobile-menu" style={{
           borderTop: '1px solid var(--border)',
           background: 'var(--surface)',
           padding: '16px 32px',

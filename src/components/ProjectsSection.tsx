@@ -100,7 +100,9 @@ export default function ProjectsSection() {
           {(['featured', 'all'] as const).map(t => (
             <button
               key={t}
+              type="button"
               onClick={() => setTab(t)}
+              aria-pressed={tab === t}
               style={{
                 fontSize: 13, fontWeight: 500,
                 padding: '7px 18px',

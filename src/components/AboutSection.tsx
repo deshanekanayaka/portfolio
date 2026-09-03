@@ -43,11 +43,11 @@ export default function AboutSection() {
 
         {/* Right: credentials — aligned with about text top */}
         <div>
-          <h3 style={{
+          <h2 style={{
             fontSize: 48, fontWeight: 700, color: 'var(--text-primary)',
             letterSpacing: '-0.03em', lineHeight: 1,
             marginBottom: 32,
-          }}>education & programs.</h3>
+          }}>education & programs.</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             {credentials.map(({ icon: Icon, text, link }) => (
               <div key={text} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>

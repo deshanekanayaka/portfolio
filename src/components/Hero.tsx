@@ -34,7 +34,7 @@ export default function Hero({ sinhala }: HeroProps) {
             fontSize: 52, fontWeight: 700, color: 'var(--text-primary)',
             letterSpacing: '-0.025em', lineHeight: 1.0,
             marginBottom: 8,
-          }} className="hero-h1">
+          }} className="hero-h1" aria-live="polite">
             {sinhala ? 'ආයුබෝවන්, මම තරිදු' : "hi, i'm tharidu. 👋"}
           </h1>
 
@@ -131,20 +131,25 @@ export default function Hero({ sinhala }: HeroProps) {
         }}>
           <img
             src="/photo.jpg"
-            alt="Tharidu E"
+            alt="Tharidu Ekanayaka"
+            width={640}
+            height={641}
+            decoding="async"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
             onError={e => {
+              // If the photo 404s, fall back to an initial rather than the old
+              // "Add photo.jpg to /public" developer note, which shipped to users.
               e.currentTarget.style.display = 'none'
               const next = e.currentTarget.nextElementSibling as HTMLElement
               if (next) next.style.display = 'flex'
             }}
           />
-          <div style={{
+          <div aria-hidden="true" style={{
             display: 'none', position: 'absolute', inset: 0,
             alignItems: 'center', justifyContent: 'center',
           }}>
-            <span style={{ fontSize: 11, color: 'var(--text-faint)', textAlign: 'center', padding: '0 24px' }}>
-              Add photo.jpg to /public
+            <span style={{ fontSize: 64, fontWeight: 600, color: 'var(--text-faint)' }}>
+              T
             </span>
           </div>
         </div>
