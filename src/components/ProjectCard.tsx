@@ -106,17 +106,15 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
 
         {/* Description */}
         {project.lead && project.bullets ? (
-          <div>
-            <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: 2 }}>
               {project.lead}
             </p>
-            <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {project.bullets.map(bullet => (
-                <li key={bullet} style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
+            {project.bullets.map(bullet => (
+              <p key={bullet} style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
+                {bullet}
+              </p>
+            ))}
           </div>
         ) : (
           <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>
