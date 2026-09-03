@@ -38,7 +38,7 @@ export function ContactPopup({ onClose }: { onClose: () => void }) {
           Links are right below — LinkedIn, GitHub, or email. I'm actively looking for junior and graduate software engineering roles in London from July 2026.
         </p>
         <div style={{ display: 'flex', gap: 10 }}>
-          <a href="mailto:deshanekanayake2003@gmail.com"
+          <a href="mailto:deshan.ekan@gamil.com"
             style={{
               flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
               fontSize: 13, fontWeight: 500, color: '#fff',
@@ -84,36 +84,42 @@ export function Footer() {
       }}>
         <div style={{
           maxWidth: 1080, margin: '0 auto', padding: '0 32px',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          flexWrap: 'wrap', gap: 12,
+          display: 'flex', flexDirection: 'column', gap: 12,
         }}>
-          {/* Left: copyright */}
-          <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>
-            © 2026 tharidu 
-          </span>
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            flexWrap: 'wrap', gap: 12,
+          }}>
+            {/* Left: copyright */}
+            <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+              © 2026 tharidu, London
+            </span>
 
-          {/* Centre */}
-          <span style={{ fontSize: 13, color: 'var(--text-faint)' }}>London · 2026</span>
-
-          {/* Right: icons */}
-          <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-            {[
-              { icon: Linkedin, href: 'https://www.linkedin.com/in/thariduekanayaka/', label: 'LinkedIn' },
-              { icon: Github, href: 'https://github.com/deshanekanayaka', label: 'GitHub' },
-              { icon: Mail, href: 'mailto:deshanekanayake2003@gmail.com', label: 'Email' },
-            ].map(({ icon: Icon, href, label }) => (
-              <a key={label} href={href}
-                target={label !== 'Email' ? '_blank' : undefined}
-                rel="noopener noreferrer"
-                title={label}
-                style={{ color: 'var(--text-muted)', transition: 'color 0.15s' }}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
-              >
-                <Icon size={18} />
-              </a>
-            ))}
+            {/* Right: icons */}
+            <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+              {[
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/thariduekanayaka/', label: 'LinkedIn' },
+                { icon: Github, href: 'https://github.com/deshanekanayaka', label: 'GitHub' },
+                { icon: Mail, href: 'mailto:deshan.ekan@gamil.com', label: 'Email' },
+              ].map(({ icon: Icon, href, label }) => (
+                <a key={label} href={href}
+                  target={label !== 'Email' ? '_blank' : undefined}
+                  rel="noopener noreferrer"
+                  title={label}
+                  style={{ color: 'var(--text-muted)', transition: 'color 0.15s' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
+
+          {/* Availability */}
+          <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+            Open to graduate SWE, backend, and junior AI/ML roles in London.
+          </span>
         </div>
       </footer>
 

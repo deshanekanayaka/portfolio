@@ -4,7 +4,7 @@ const socials = [
   { icon: Download, label: 'Download CV', href: '/Tharidu_Ekanayaka_CV.pdf', download: true },
   { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thariduekanayaka/', download: false },
   { icon: Github, label: 'GitHub', href: 'https://github.com/deshanekanayaka', download: false },
-  { icon: Mail, label: 'Email', href: 'mailto:deshanekanayake2003@gmail.com', download: false },
+  { icon: Mail, label: 'Email', href: 'mailto:deshan.ekan@gamil.com', download: false },
 ]
 
 interface HeroProps {

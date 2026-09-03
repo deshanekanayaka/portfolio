@@ -114,7 +114,8 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
 
           <button
             onClick={onToggleSinhala}
-            title="සිංහල"
+            title="Switch greeting to Sinhala"
+            aria-label="Switch greeting to Sinhala"
             style={{
               fontSize: 20, background: 'none', border: 'none',
               cursor: 'pointer', lineHeight: 1,
