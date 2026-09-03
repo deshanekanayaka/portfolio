@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 export interface ProjectData {
   title: string
   description: string
+  lead?: string
+  bullets?: string[]
   typeBadge: string
   statBadge: string
   stack: string[]
@@ -37,7 +39,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           position: 'relative',
           overflow: 'hidden',
           height: '100%',
-          minHeight: 420,
+          minHeight: 460,
         }}
       >
         {project.screenshot && (
@@ -103,9 +105,24 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         </div>
 
         {/* Description */}
-        <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>
-          {project.description}
-        </p>
+        {project.lead && project.bullets ? (
+          <div>
+            <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: 8 }}>
+              {project.lead}
+            </p>
+            <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {project.bullets.map(bullet => (
+                <li key={bullet} style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65 }}>
+            {project.description}
+          </p>
+        )}
 
         {/* Tech stack pills */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>

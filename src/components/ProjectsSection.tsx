@@ -5,6 +5,12 @@ const projects: ProjectData[] = [
   {
     title: 'Diacify — Clinical Decision Support System',
     description: 'ML system that ranks diabetic patients by urgency. Rebuilt from a 53% university submission to 94% Random Forest accuracy.',
+    lead: 'A clinical dashboard that ranks diabetic patients by urgency, so the highest-risk cases surface first. Full-stack ML: model, API, and interface.',
+    bullets: [
+      'Rebuilt the model after a 53% university submission, using a scikit-learn Random Forest with rebalanced classes and proper cross-validation, reaching 94% accuracy.',
+      'Served predictions through a FastAPI service backed by MySQL 8, containerised with Docker and deployed through GitHub Actions on every merge.',
+      'Turned a failing coursework submission into a deployed system I still maintain.',
+    ],
     typeBadge: 'ML · Full-stack',
     statBadge: '94% accuracy',
     stack: ['React 18', 'Node.js', 'FastAPI', 'MySQL 8', 'scikit-learn', 'Docker', 'GitHub Actions'],
@@ -17,6 +23,12 @@ const projects: ProjectData[] = [
   {
     title: 'ClaimLens — AI Damage Claim Triage',
     description: 'Three call LLM pipeline that inspects claim photos against the claimant transcript and returns a structured verdict: supported, contradicted, or not enough information. Red teamed against 12 adversarial scenarios, 8 defects found and fixed.',
+    lead: 'Reads a damage claim, inspects the photos, and returns a verdict on whether the story matches the evidence. The kind of LLM pipeline work an AI engineering role runs on.',
+    bullets: [
+      'Built a three-call pipeline with the Anthropic SDK, validating each call against a strict schema so a malformed response is rejected rather than passed downstream.',
+      'Red teamed it against 12 adversarial claims covering mismatched photos, contradictory transcripts, and missing evidence, finding and fixing 8 defects.',
+      'Returns SUPPORTED, CONTRADICTED, or NOT ENOUGH INFO in about 14 seconds, and refuses to answer when the evidence is thin.',
+    ],
     typeBadge: 'AI · Full-stack',
     statBadge: '8 defects found & fixed',
     stack: ['Next.js 15', 'FastAPI', 'Python', 'Anthropic SDK', 'SQLite', 'TypeScript', 'Tailwind v4'],
