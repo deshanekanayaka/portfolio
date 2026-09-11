@@ -25,10 +25,10 @@ Live at **[tharidu.dev](https://tharidu.dev)**
 
 - Light and dark theme toggle
 - 🇱🇰 Sinhala greeting easter egg
-- Interactive SVG background — moon, constellation, guitar strings, light beam
+- Interactive SVG background: moon, constellation, guitar strings, light beam
 - Scroll progress indicator
 - Project screenshots with lightbox
-- Diacify and SKY Engineering case study pages
+- SKY Engineering case study page
 - Build log modal (`v1.0` in footer)
 - Responsive down to 375px
 ---
@@ -36,10 +36,10 @@ Live at **[tharidu.dev](https://tharidu.dev)**
 
 The background pattern is hand-crafted SVG with personal meaning:
 
-- **Crescent moon** — "tharidu" means *the moon* in Sinhala
-- **Guitar string arcs** — fingerpicking guitar is a hobby
-- **Constellation** — inspired by Sri Lankan music and Harry Potter astronomy
-- **Light beam** — Expecto Patronum / Goggins energy
+- **Crescent moon**: "tharidu" means *the moon* in Sinhala
+- **Guitar string arcs**: fingerpicking guitar is a hobby
+- **Constellation**: inspired by Sri Lankan music and Harry Potter astronomy
+- **Light beam**: Expecto Patronum / Goggins energy
 
 Two versions: `LightSVG.tsx` and `DarkSVG.tsx` swap on theme toggle.
 
@@ -49,7 +49,7 @@ Two versions: `LightSVG.tsx` and `DarkSVG.tsx` swap on theme toggle.
 
 | Trigger | Effect |
 |---|---|
-| Hover name in navbar | Tooltip: "තරිදු — the moon, in sinhala." |
+| Hover name in navbar | Tooltip: "තරිදු, the moon, in sinhala." |
 | Click 🇱🇰 in hero | Greeting swaps to Sinhala for 2.5s |
 | Hover star node | Star brightens |
 | Hover guitar string | String plucks |
@@ -61,4 +61,4 @@ Two versions: `LightSVG.tsx` and `DarkSVG.tsx` swap on theme toggle.
 
 ## Licence
 
-MIT — feel free to use as inspiration, but please don't copy the personal content.
+MIT. Feel free to use as inspiration, but please do not copy the personal content.

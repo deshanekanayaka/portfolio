@@ -70,19 +70,6 @@ const routes = [
     `,
   },
   {
-    path: 'projects/diacify',
-    title: 'Diacify Case Study | Tharidu Deshan Ekanayaka',
-    body: `
-      <a href="#main" class="skip-link">Skip to content</a>
-      <main id="main" style="padding:40px 0">
-        <div style="max-width:800px;margin:0 auto;padding:0 32px">
-          <h1 style="font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin:0 0 10px">Diacify — Clinical Decision Support System</h1>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin:0 0 12px">Rebuilt from a 53% university submission into a production-grade three-service system.</p>
-        </div>
-      </main>
-    `,
-  },
-  {
     path: 'projects/sky-health-check',
     title: 'SKY Engineering Case Study | Tharidu Deshan Ekanayaka',
     body: `
@@ -106,4 +93,4 @@ for (const r of routes) {
   }
 }
 
-console.log('[prerender] Wrote static HTML for /, /projects/diacify, /projects/sky-health-check')
+console.log('[prerender] Wrote static HTML for /, /projects/sky-health-check')
