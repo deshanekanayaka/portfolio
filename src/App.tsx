@@ -3,7 +3,6 @@ import { useState, useEffect, lazy, Suspense } from 'react'
 import Home from './routes/Home'
 
 // Case studies are split out so the homepage bundle does not carry them.
-const DiacifyCaseStudy = lazy(() => import('./routes/projects/Diacify'))
 const SKYCaseStudy = lazy(() => import('./routes/projects/SKY'))
 
 export default function App() {
@@ -34,11 +33,6 @@ export default function App() {
             onToggleTheme={toggleTheme}
             onToggleSinhala={toggleSinhala}
           />
-        } />
-        <Route path="/projects/diacify" element={
-          <Suspense fallback={null}>
-            <DiacifyCaseStudy theme={theme} onToggleTheme={toggleTheme} />
-          </Suspense>
         } />
         <Route path="/projects/sky-health-check" element={
           <Suspense fallback={null}>
