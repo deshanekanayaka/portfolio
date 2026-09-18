@@ -21,7 +21,7 @@ const projects: ProjectData[] = [
     typeBadge: 'AI · Full-stack',
     statBadge: '8 defects found & fixed',
     stack: ['Next.js 15', 'FastAPI', 'Python', 'Anthropic SDK', 'SQLite', 'TypeScript', 'Tailwind v4'],
-    demo: '',
+    demo: 'https://claimlens-navy.vercel.app/',
     github: 'https://github.com/deshanekanayaka/claimlens',
     screenshot: '/screenshots/claimlens.webp',
   },

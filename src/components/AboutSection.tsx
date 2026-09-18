@@ -30,14 +30,15 @@ export default function AboutSection() {
             marginBottom: 32,
           }}>about.</h2>
           <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '68ch' }}>
-            I build backends and the AI layer on top. Most of my time goes into what a
-            system does when something is missing or wrong.
+            I build backend-heavy full-stack software and I am moving into AI engineering.
+            I want to understand how things work, not just make them run.
           </p>
           <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '68ch', marginTop: 20 }}>
-            Currently building Retell, a daily voice practice tool for interview answers.
+            At FlyRank, I work on API contracts, retrieval-backed answer flows, structured
+            outputs, and tool-calling workflows, and I own correctness and failure handling.
           </p>
           <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '68ch', marginTop: 20 }}>
-            Fuelled by black coffee. No sugar, no exceptions.
+            Outside code, I play fingerpicking guitar and I practice yoga.
           </p>
         </div>
 
