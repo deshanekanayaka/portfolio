@@ -147,30 +147,18 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
 
         {/* Tech stack pills */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
-          {project.stack.slice(0, 5).map(tech => (
+          {project.stack.map(tech => (
             <span key={tech} style={{
               fontSize: 12,
               fontWeight: 500,
               padding: '4px 10px',
               borderRadius: 6,
-              border: '1px solid var(--border)',
-              background: 'var(--surface-raised)',
-              color: 'var(--text-muted)',
+              border: '1px solid var(--accent-border)',
+              background: 'var(--accent-bg)',
+              color: 'var(--accent-text)',
               whiteSpace: 'nowrap',
             }}>{tech}</span>
           ))}
-          {project.stack.length > 5 && (
-            <span style={{
-              fontSize: 12,
-              fontWeight: 500,
-              padding: '4px 10px',
-              borderRadius: 6,
-              border: '1px solid var(--border)',
-              background: 'var(--surface-raised)',
-              color: 'var(--text-faint)',
-              whiteSpace: 'nowrap',
-            }}>+{project.stack.length - 5}</span>
-          )}
         </div>
 
         {/* Buttons */}
@@ -213,23 +201,22 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                   style={{
                       fontSize: 12,
                       fontWeight: 500,
-                      color: 'var(--text-muted)',
-                      border: '1px solid var(--border)',
+                      color: '#fff',
+                      background: '#15803D',
+                      border: '1px solid #15803D',
                       borderRadius: 6,
                       padding: '6px 13px',
                       display: 'flex',
                       alignItems: 'center',
                       gap: 5,
-                      transition: 'all 0.15s',
+                      transition: 'background 0.15s',
                       textDecoration: 'none',
                   }}
                   onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--accent-border)'
-                      e.currentTarget.style.color = 'var(--accent-text)'
+                      e.currentTarget.style.background = '#166534'
                   }}
                   onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--border)'
-                      e.currentTarget.style.color = 'var(--text-muted)'
+                      e.currentTarget.style.background = '#15803D'
                   }}
               >
                   <Github size={12} />
