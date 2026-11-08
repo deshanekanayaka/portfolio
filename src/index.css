@@ -7,6 +7,7 @@
   --border: #E8EDF4;
   --border-hover: #BFDBFE;
   --text-primary: #0F172A;
+  --text-bold: #03045e;
   --text-muted: #3F4756;
   --text-faint: #5B6472;
   --text-stack: #1D4ED8;
@@ -30,6 +31,7 @@
   --border: #2A2A2A;
   --border-hover: #3B82F6;
   --text-primary: #F1F5F9;
+  --text-bold: #FFFFFF;
   --text-muted: #94A3B8;
   --text-faint: #8A94A6;
   --text-stack: #93C5FD;
@@ -54,7 +56,92 @@ body {
 }
 
 #root { position: relative; z-index: 1; }
+.page-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.homepage-main {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-bottom: 48px;
+}
+.homepage-main section[id] { scroll-margin-top: 84px; }
+
+/* Let personal details show at the edges, with very little ink behind copy. */
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  color: #315b86;
+  opacity: 0.23;
+  mask-image: linear-gradient(to right,
+    #000,
+    #000 max(24px, calc(50% - 500px)),
+    rgba(0, 0, 0, 0.12) max(80px, calc(50% - 400px)),
+    rgba(0, 0, 0, 0.12) min(calc(100% - 80px), calc(50% + 400px)),
+    #000 min(calc(100% - 24px), calc(50% + 500px)),
+    #000);
+}
+.artwork-dark { color: #8eb7e1; opacity: 0.2; }
+.homepage-main, footer { position: relative; z-index: 1; }
+.background-moon { position: absolute; width: 260px; height: 260px; top: 68px; right: 8px; }
+.moon-rings { transform-origin: 130px 130px; transition: transform 0.7s ease, opacity 0.7s ease; opacity: 0.5; }
+.moon-art.is-near .moon-rings { transform: scale(1.06); opacity: 1; }
+.background-constellation { position: absolute; width: 190px; height: 165px; left: 12px; bottom: 240px; }
+.constellation-star { opacity: 0.6; transition: opacity 0.2s ease, filter 0.2s ease; }
+.constellation-star.is-near { opacity: 1; filter: drop-shadow(0 0 4px currentColor); }
+.background-strings { position: absolute; width: 100%; height: 260px; bottom: -32px; left: 0; }
+.background-beam { position: absolute; width: 240px; height: 320px; left: 0; bottom: 80px; opacity: 0.45; }
+.string-pluck { animation: string-pluck 0.6s ease; }
+@keyframes string-pluck {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+  50% { transform: translateY(2px); }
+  75% { transform: translateY(-1px); }
+}
+.name-link { position: relative; }
+.name-tooltip {
+  position: absolute;
+  top: 100%; left: 0;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 12px; font-weight: 400; line-height: 1.5;
+  white-space: nowrap;
+  visibility: hidden; opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.name-link:hover .name-tooltip, .name-link:focus-visible .name-tooltip { visibility: visible; opacity: 1; }
+.wave-hand {
+  display: inline-block;
+  transform-origin: 70% 75%;
+  cursor: default;
+}
+.wave-hand:hover, .wave-hand:focus-visible { animation: hand-wave 1.2s ease-in-out; }
+@keyframes hand-wave {
+  0%, 100% { transform: rotate(0deg); }
+  15%, 45% { transform: rotate(18deg); }
+  30%, 60% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+@media (max-width: 640px) {
+  .page-container { padding: 0 20px; }
+  .homepage-main { gap: 36px; padding-bottom: 36px; }
+  .site-background { opacity: 0.16; }
+  .artwork-dark { opacity: 0.14; }
+  .background-moon { width: 180px; height: 180px; right: -24px; top: 72px; }
+  .background-constellation { width: 120px; height: 104px; left: -12px; bottom: 180px; }
+  .background-strings { height: 180px; }
+}
 a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4, h5, h6, strong, b { color: var(--text-bold); }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; font-family: var(--font); border: none; background: none; }
 
@@ -80,9 +167,7 @@ button { cursor: pointer; font-family: var(--font); border: none; background: no
 }
 .skip-link:focus { left: 16px; top: 16px; }
 
-/* Honour reduced-motion: strip transitions/animations and instant scroll.
-   JS-driven effects (particle trail, moon rAF) are gated separately at
-   their source in LightSVG/DarkSVG. */
+/* Honour reduced-motion. Background pointer effects are gated in BackgroundArtwork. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

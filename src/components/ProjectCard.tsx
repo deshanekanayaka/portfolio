@@ -112,7 +112,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
           <FolderOpen size={16} style={{ color: 'var(--text-faint)', marginTop: 2, flexShrink: 0 }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-bold)', letterSpacing: '-0.01em' }}>
               {project.title}
             </span>
             {project.flagship && (

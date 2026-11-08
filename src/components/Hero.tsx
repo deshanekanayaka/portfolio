@@ -6,45 +6,39 @@ const iconSocials = [
   { icon: Mail, label: 'Email', href: 'mailto:deshan.ekan@gmail.com' },
 ]
 
-interface HeroProps {
-  sinhala: boolean
-  onToggleSinhala: () => void
-}
-
-export default function Hero({ sinhala }: HeroProps) {
+export default function Hero() {
   return (
     <section className="hero-section" style={{
       display: 'flex',
       alignItems: 'center',
-      paddingTop: 128,
-      paddingBottom: 56,
+      paddingTop: 96,
+      paddingBottom: 0,
     }}>
       <div style={{
-        maxWidth: 1080, margin: '0 auto', padding: '0 32px',
         width: '100%',
         display: 'grid',
-        gridTemplateColumns: '1fr 320px',
-        gap: 64,
+        gridTemplateColumns: 'minmax(0, 1fr) 240px',
+        gap: 32,
         alignItems: 'center',
-      }} className="hero-grid">
+      }} className="page-container hero-grid">
 
         {/* Left */}
         <div>
           <h1 style={{
-            fontSize: 52, fontWeight: 700, color: 'var(--text-primary)',
-            letterSpacing: '-0.025em', lineHeight: 1.0,
+            fontSize: 44, fontWeight: 700, color: 'var(--text-bold)',
+            letterSpacing: '-0.025em', lineHeight: 1.15,
             marginBottom: 8,
-          }} className="hero-h1" aria-live="polite">
-            {sinhala ? 'ආයුබෝවන්, මම තරිදු' : "hi, i'm tharidu. 👋"}
+          }} className="hero-h1">
+            hi, i'm tharidu. <span className="wave-hand" role="img" aria-label="Waving hand" tabIndex={0}>👋</span>
           </h1>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, maxWidth: 460 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20, maxWidth: 460 }}>
             <span style={{ fontSize: 21, fontWeight: 400, color: 'var(--text-primary)' }}>
               software engineer in London
             </span>
-            <span style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.5, color: 'var(--text-muted)' }}>
-              Backend-leaning full-stack, currently working my way into AI engineering.
-            </span>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--text-muted)' }}>
+              Outside code, I play fingerpicking guitar and practise yoga.
+            </p>
           </div>
 
           {/* Socials */}
@@ -120,7 +114,7 @@ export default function Hero({ sinhala }: HeroProps) {
 
         {/* Right: photo */}
         <div className="hero-photo-wrap" style={{
-          width: 320, height: 400,
+          width: 240, height: 280,
           borderRadius: 20,
           overflow: 'hidden',
           flexShrink: 0,
@@ -150,7 +144,7 @@ export default function Hero({ sinhala }: HeroProps) {
             display: 'none', position: 'absolute', inset: 0,
             alignItems: 'center', justifyContent: 'center',
           }}>
-            <span style={{ fontSize: 64, fontWeight: 600, color: 'var(--text-faint)' }}>
+            <span style={{ fontSize: 64, fontWeight: 600, color: 'var(--text-bold)' }}>
               T
             </span>
           </div>
@@ -159,9 +153,9 @@ export default function Hero({ sinhala }: HeroProps) {
 
       <style>{`
         @media (max-width: 768px) {
-          .hero-section { min-height: auto !important; padding-top: 100px !important; }
-          .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .hero-photo-wrap { width: 220px !important; height: 275px !important; margin: 0 auto; }
+          .hero-section { min-height: auto !important; padding-top: 88px !important; }
+          .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .hero-photo-wrap { width: 180px !important; height: 210px !important; margin: 0 auto; }
           .hero-h1 { font-size: 36px !important; }
         }
       `}</style>

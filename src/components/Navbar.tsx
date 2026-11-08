@@ -3,15 +3,13 @@ import { Moon, Sun } from 'lucide-react'
 
 interface NavbarProps {
   theme: string
-  sinhala: boolean
   onToggleTheme: () => void
-  onToggleSinhala: () => void
 }
 
-export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala }: NavbarProps) {
+export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [showMeaning, setShowMeaning] = useState(false)
+  const [tooltipDismissed, setTooltipDismissed] = useState(false)
 
   useEffect(() => {
     // rAF-coalesced, and only re-render when the boolean actually flips.
@@ -33,7 +31,8 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
   const links = [
     { label: 'home', href: '/' },
     { label: 'work', href: '#work' },
-    { label: 'about', href: '#about' },
+    { label: 'projects', href: '#projects' },
+    { label: 'education', href: '#education' },
   ]
 
   return (
@@ -47,43 +46,27 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
       transition: 'all 0.2s ease',
     }}>
       <div style={{
-        maxWidth: 1080, margin: '0 auto',
-        padding: '0 32px',
         height: 60,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
-        {/* Name with tooltip */}
-        <a href="/" style={{
+      }} className="page-container">
+        {/* Name */}
+        <a href="/" className="name-link"
+          aria-describedby={tooltipDismissed ? undefined : 'name-meaning'}
+          onMouseEnter={() => setTooltipDismissed(false)}
+          onFocus={() => setTooltipDismissed(false)}
+          onKeyDown={e => { if (e.key === 'Escape') setTooltipDismissed(true) }}
+          style={{
           fontSize: 16, fontWeight: 600,
-          color: 'var(--text-primary)',
+          color: 'var(--text-bold)',
           letterSpacing: '-0.01em',
           textDecoration: 'none',
         }}>
-          <span
-            style={{ position: 'relative' }}
-            onMouseEnter={() => setShowMeaning(true)}
-            onMouseLeave={() => setShowMeaning(false)}
-          >
-            {sinhala ? 'තරිදු' : 'tharidu'}
-            {showMeaning && (
-              <div style={{
-                position: 'absolute',
-                top: 28,
-                left: 0,
-                background: 'var(--surface)',
-                border: '1px solid var(--border)',
-                borderRadius: 8,
-                padding: '6px 12px',
-                fontSize: 12,
-                color: 'var(--text-muted)',
-                whiteSpace: 'nowrap',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                zIndex: 200,
-              }}>
-                තරිදු — the moon, in sinhala.
-              </div>
-            )}
-          </span>
+          tharidu
+          {!tooltipDismissed && (
+            <span id="name-meaning" className="name-tooltip" role="tooltip">
+              තරිදු, the moon, in sinhala.
+            </span>
+          )}
         </a>
 
         {/* Desktop nav */}
@@ -97,7 +80,7 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
           ))}
         </div>
 
-        {/* Right: theme + flag */}
+        {/* Right: theme */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <button
             onClick={onToggleTheme}
@@ -125,20 +108,6 @@ export default function Navbar({ theme, sinhala, onToggleTheme, onToggleSinhala 
           >
             {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
           </button>
-
-          <button
-            onClick={onToggleSinhala}
-            type="button"
-            title="Switch greeting to Sinhala"
-            aria-label="Switch greeting to Sinhala"
-            aria-pressed={sinhala}
-            style={{
-              fontSize: 20, background: 'none', border: 'none',
-              cursor: 'pointer', lineHeight: 1,
-              transform: sinhala ? 'scale(1.2)' : 'scale(1)',
-              transition: 'transform 0.2s ease',
-            }}
-          >🇱🇰</button>
         </div>
 
         {/* Mobile hamburger */}
