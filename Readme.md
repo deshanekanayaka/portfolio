@@ -24,7 +24,7 @@ Live at **[tharidu.dev](https://tharidu.dev)**
 ## Features
 
 - Light and dark theme toggle
-- 🇱🇰 Sinhala greeting easter egg
+- Hand emoji waves on hover or keyboard focus
 - Interactive SVG background: moon, constellation, guitar strings, light beam
 - Scroll progress indicator
 - Project screenshots with lightbox
@@ -42,6 +42,7 @@ The background pattern is hand-crafted SVG with personal meaning:
 - **Light beam**: Expecto Patronum / Goggins energy
 
 Two versions: `LightSVG.tsx` and `DarkSVG.tsx` swap on theme toggle.
+Both use shared artwork that fades toward the text column and stays subtle on mobile.
 
 ---
 
@@ -49,11 +50,10 @@ Two versions: `LightSVG.tsx` and `DarkSVG.tsx` swap on theme toggle.
 
 | Trigger | Effect |
 |---|---|
-| Hover name in navbar | Tooltip: "තරිදු, the moon, in sinhala." |
-| Click 🇱🇰 in hero | Greeting swaps to Sinhala for 2.5s |
+| Hover or focus hand emoji | Hand waves |
+| Hover or focus name in navbar | Tooltip: "තරිදු, the moon, in sinhala." |
 | Hover star node | Star brightens |
 | Hover guitar string | String plucks |
-| Fast mouse movement | Blue particle trail |
 | Hover moon area | Radial rings expand |
 | Click project screenshot | Lightbox opens, background blurs |
 

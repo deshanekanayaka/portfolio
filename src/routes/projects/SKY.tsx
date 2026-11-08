@@ -26,14 +26,14 @@ export default function SKYCaseStudy({ theme, onToggleTheme }: Props) {
         <button onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontSize: 14, background: 'none', border: 'none', cursor: 'pointer' }}>
           <ArrowLeft size={15} /> Back
         </button>
-        <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>tharidu</span>
+        <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--text-bold)', letterSpacing: '-0.01em' }}>tharidu</span>
         <button onClick={onToggleTheme} type="button" aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'} style={{ fontSize: 18, background: 'none', border: 'none', cursor: 'pointer' }}>
           {theme === 'dark' ? '☀️' : '🌙'}
         </button>
       </header>
       <main id="main" tabIndex={-1} style={{ paddingTop: 60 }}>
         <div style={{ maxWidth: 800, margin: '0 auto', padding: '48px 32px 80px' }}>
-          <h1 style={{ fontSize: 32, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 12 }}>
+          <h1 style={{ fontSize: 32, fontWeight: 700, color: 'var(--text-bold)', letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 12 }}>
             Agile Group Web Application — SKY Engineering
           </h1>
           <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: 20 }}>
@@ -60,11 +60,11 @@ export default function SKYCaseStudy({ theme, onToggleTheme }: Props) {
               The application supports four user tiers — team member, team lead, admin, and viewer.
             </p>
           </div>
-          <h2 style={{ fontSize: 20, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 16 }}>Technical highlights</h2>
+          <h2 style={{ fontSize: 20, fontWeight: 600, color: 'var(--text-bold)', marginBottom: 16 }}>Technical highlights</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14 }} className="highlights-grid">
             {highlights.map(h => (
               <div key={h.title} style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 10, padding: '16px 18px' }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 8 }}>{h.title}</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-bold)', marginBottom: 8 }}>{h.title}</div>
                 <p style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.65 }}>{h.body}</p>
               </div>
             ))}

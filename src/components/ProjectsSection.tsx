@@ -74,16 +74,16 @@ export default function ProjectsSection() {
   const shown = tab === 'featured' ? projects.filter((_, i) => i < 2) : projects
 
   return (
-    <section id="work" ref={sectionRef} style={{ padding: '80px 0 64px' }}>
-      <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 32px' }}>
+    <section id="projects" ref={sectionRef}>
+      <div className="page-container">
 
         {/* Ted-style heading */}
         <h2 style={{
-          fontSize: 48, fontWeight: 700, color: 'var(--text-primary)',
+          fontSize: 36, fontWeight: 700, color: 'var(--text-bold)',
           letterSpacing: '-0.03em', lineHeight: 1,
-          marginBottom: 40,
+          marginBottom: 24,
         }}>
-          work.
+          projects.
         </h2>
 
         {/* Tab toggle — Ted style: pill toggle not underline tabs */}
@@ -93,7 +93,7 @@ export default function ProjectsSection() {
           border: '1px solid var(--border)',
           borderRadius: 10,
           padding: 4,
-          marginBottom: 32,
+          marginBottom: 20,
           gap: 2,
         }}>
           {(['featured', 'all'] as const).map(t => (

@@ -1,7 +1,8 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import ProjectsSection from '../components/ProjectsSection'
-import AboutSection from '../components/AboutSection'
+import WorkSection from '../components/WorkSection'
+import EducationSection from '../components/EducationSection'
 import { Footer } from '../components/ContactAndFooter'
 import ScrollProgress from '../components/ScrollProgress'
 import LightSVG from '../components/LightSVG'
@@ -10,14 +11,11 @@ import { Helmet } from 'react-helmet-async'
 
 interface Props {
   theme: string
-  sinhala: boolean
   onToggleTheme: () => void
-  onToggleSinhala: () => void
 }
 
 export default function Home({
-  theme, sinhala,
-  onToggleTheme, onToggleSinhala,
+  theme, onToggleTheme,
 }: Props) {
   return (
     <>
@@ -30,14 +28,13 @@ export default function Home({
       <ScrollProgress />
       <Navbar
         theme={theme}
-        sinhala={sinhala}
         onToggleTheme={onToggleTheme}
-        onToggleSinhala={onToggleSinhala}
       />
-      <main id="main" tabIndex={-1}>
-        <Hero sinhala={sinhala} onToggleSinhala={onToggleSinhala} />
+      <main id="main" className="homepage-main" tabIndex={-1}>
+        <Hero />
+        <WorkSection />
         <ProjectsSection />
-        <AboutSection />
+        <EducationSection />
       </main>
       <Footer />
     </>

@@ -10,10 +10,9 @@ export function Footer() {
         padding: '24px 0',
       }}>
         <div style={{
-          maxWidth: 1080, margin: '0 auto', padding: '0 32px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           flexWrap: 'wrap', gap: 12,
-        }}>
+        }} className="page-container">
           {/* Left: copyright */}
           <span style={{ fontSize: 14, color: 'var(--text-muted)' }}>
             © 2026 tharidu, London
